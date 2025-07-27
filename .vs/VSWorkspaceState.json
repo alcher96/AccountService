@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Account Service",
+    "\\Account Service\\Accounts",
+    "\\Account Service\\Accounts\\Validators",
+    "\\Account Service\\Filters"
+  ],
+  "SelectedNode": "\\Account Service\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
+  "PreviewInSolutionExplorer": false
+}
