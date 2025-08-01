@@ -1,9 +1,6 @@
 ﻿using Account_Service.Accounts;
 using Account_Service.Accounts.AddAccount.Command;
 using Account_Service.Accounts.GetAccount.Query;
-using Account_Service.Transactions.AddTransaction.Command;
-using Account_Service.Transactions.PerformTransfer.Command;
-using Account_Service.Transactions;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
@@ -12,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Account_Service.Accounts.UpdateAccount.Command;
 using Account_Service.Accounts.PatchAccount.Command;
+using Account_Service;
 
 namespace AccountService.Tests;
 
@@ -33,22 +31,22 @@ public class AccountControllerTests
         var command = new CreateAccountCommand
         {
             OwnerId = Guid.NewGuid(),
-            AccountType = AccountType.Deposit,
             Currency = "USD",
-            Balance = 1000,
+            AccountType = AccountType.Deposit,
             InterestRate = 1.5m
         };
         var accountDto = new AccountDto
         {
             AccountId = Guid.NewGuid(),
             OwnerId = command.OwnerId,
-            AccountType = command.AccountType,
             Currency = command.Currency,
-            Balance = command.Balance,
+            AccountType = command.AccountType,
             InterestRate = command.InterestRate,
+            Balance = 0,
             OpeningDate = DateTime.UtcNow
         };
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ReturnsAsync(accountDto);
+        _mediatorMock.Setup(m => m.Send(It.Is<CreateAccountCommand>(c => c.OwnerId == command.OwnerId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Success(accountDto));
 
         // Act
         var result = await _controller.CreateAccount(command);
@@ -57,27 +55,58 @@ public class AccountControllerTests
         var createdResult = Assert.IsType<CreatedAtActionResult>(result);
         Assert.Equal(StatusCodes.Status201Created, createdResult.StatusCode);
         Assert.Equal(nameof(AccountController.GetAccountById), createdResult.ActionName);
-        Assert.Equal(accountDto.AccountId, createdResult.RouteValues?["id"]);
-        Assert.Equal(accountDto, createdResult.Value);
+        Assert.Equal(accountDto.AccountId, createdResult.RouteValues["id"]);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(createdResult.Value);
+        Assert.True(mbResult.IsSuccess);
+        Assert.Equal(accountDto, mbResult.Value);
     }
 
+    [Fact]
+    public async Task CreateAccount_InvalidCurrency_ReturnsBadRequest()
+    {
+        // Arrange
+        var command = new CreateAccountCommand
+        {
+            OwnerId = Guid.NewGuid(),
+            Currency = "XYZ",
+            AccountType = AccountType.Deposit,
+            InterestRate = 1.5m
+        };
+        var validationErrors = new Dictionary<string, string[]> { { "Currency", new[] { "Валюта не поддерживается" } } };
+        _mediatorMock.Setup(m => m.Send(It.Is<CreateAccountCommand>(c => c.OwnerId == command.OwnerId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Failure(validationErrors));
+
+        // Act
+        var result = await _controller.CreateAccount(command);
+
+        // Assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
+        Assert.False(mbResult.IsSuccess);
+        Assert.Equal("Validation failed", mbResult.Error);
+        Assert.Contains("Currency", mbResult.ValidationErrors);
+        Assert.Equal("Валюта не поддерживается", mbResult.ValidationErrors["Currency"][0]);
+    }
 
     [Fact]
     public async Task GetAccountById_ValidId_ReturnsOkResult()
     {
         // Arrange
         var accountId = Guid.NewGuid();
+        var query = new GetAccountByIdQuery { Id = accountId };
         var accountDto = new AccountDto
         {
             AccountId = accountId,
             OwnerId = Guid.NewGuid(),
-            AccountType = AccountType.Deposit,
             Currency = "USD",
-            Balance = 1000,
+            AccountType = AccountType.Deposit,
             InterestRate = 1.5m,
+            Balance = 1000,
             OpeningDate = DateTime.UtcNow
         };
-        _mediatorMock.Setup(m => m.Send(It.Is<GetAccountByIdQuery>(q => q.Id == accountId), It.IsAny<CancellationToken>())).ReturnsAsync(accountDto);
+        _mediatorMock.Setup(m => m.Send(It.Is<GetAccountByIdQuery>(q => q.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Success(accountDto));
 
         // Act
         var result = await _controller.GetAccountById(accountId);
@@ -85,419 +114,200 @@ public class AccountControllerTests
         // Assert
         var okResult = Assert.IsType<OkObjectResult>(result);
         Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
-        Assert.Equal(accountDto, okResult.Value);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(okResult.Value);
+        Assert.True(mbResult.IsSuccess);
+        Assert.Equal(accountDto, mbResult.Value);
     }
 
-   
-
     [Fact]
-    public async Task CreateTransaction_ValidCommand_ReturnsCreatedResult()
+    public async Task GetAccountById_NonExistingId_ReturnsBadRequest()
     {
         // Arrange
-        var command = new CreateTransactionCommand
-        {
-            AccountId = Guid.NewGuid(),
-            Type = TransactionType.Credit,
-            Amount = 500,
-            Currency = "USD",
-            Description = "Test deposit"
-        };
-        var transactionDto = new TransactionDto
-        {
-            TransactionId = Guid.NewGuid(),
-            AccountId = command.AccountId,
-            Type = command.Type,
-            Amount = command.Amount,
-            Currency = command.Currency,
-            Description = command.Description,
-            DateTime = DateTime.UtcNow
-        };
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ReturnsAsync(transactionDto);
+        var accountId = Guid.NewGuid();
+        var query = new GetAccountByIdQuery { Id = accountId };
+        _mediatorMock.Setup(m => m.Send(It.Is<GetAccountByIdQuery>(q => q.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Failure("Счёт не найден"));
 
         // Act
-        var result = await _controller.CreateTransaction(command);
+        var result = await _controller.GetAccountById(accountId);
 
         // Assert
-        var createdResult = Assert.IsType<CreatedAtActionResult>(result);
-        Assert.Equal(StatusCodes.Status201Created, createdResult.StatusCode);
-        Assert.Equal(nameof(AccountController.GetAccountById), createdResult.ActionName);
-        Assert.Equal(command.AccountId, createdResult.RouteValues?["id"]);
-        Assert.Equal(transactionDto, createdResult.Value);
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
+        Assert.False(mbResult.IsSuccess);
+        Assert.Equal("Счёт не найден", mbResult.Error);
     }
 
-   
-
     [Fact]
-    public async Task PerformTransfer_ValidCommand_ReturnsCreatedResult()
+    public async Task GetAccounts_ValidQuery_ReturnsOkResult()
     {
         // Arrange
-        var command = new PerformTransferCommand
+        var ownerId = Guid.NewGuid();
+        var query = new GetAccountsQuery { OwnerId = ownerId, Type = AccountType.Deposit };
+        var accounts = new List<AccountDto>
         {
-            FromAccountId = Guid.NewGuid(),
-            ToAccountId = Guid.NewGuid(),
-            Amount = 500,
-            Currency = "USD",
-            Description = "Test transfer"
-        };
-        var transactions = new[]
-        {
-            new TransactionDto
+            new AccountDto
             {
-                TransactionId = Guid.NewGuid(),
-                AccountId = command.FromAccountId,
-                Type = TransactionType.Debit,
-                Amount = command.Amount,
-                Currency = command.Currency,
-                Description = command.Description,
-                DateTime = DateTime.UtcNow
-            },
-            new TransactionDto
-            {
-                TransactionId = Guid.NewGuid(),
-                AccountId = command.ToAccountId,
-                Type = TransactionType.Credit,
-                Amount = command.Amount,
-                Currency = command.Currency,
-                Description = command.Description,
-                DateTime = DateTime.UtcNow
+                AccountId = Guid.NewGuid(),
+                OwnerId = ownerId,
+                Currency = "USD",
+                AccountType = AccountType.Deposit,
+                InterestRate = 1.5m,
+                Balance = 1000,
+                OpeningDate = DateTime.UtcNow
             }
         };
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ReturnsAsync(transactions);
+        _mediatorMock.Setup(m => m.Send(It.Is<GetAccountsQuery>(q => q.OwnerId == ownerId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<List<AccountDto>>.Success(accounts));
 
         // Act
-        var result = await _controller.PerformTransfer(command);
+        var result = await _controller.GetAccounts(ownerId, AccountType.Deposit);
 
         // Assert
-        var createdResult = Assert.IsType<CreatedAtActionResult>(result);
-        Assert.Equal(StatusCodes.Status201Created, createdResult.StatusCode);
-        Assert.Equal(nameof(AccountController.GetAccountById), createdResult.ActionName);
-        Assert.Equal(command.FromAccountId, createdResult.RouteValues?["id"]);
-        Assert.Equal(transactions, createdResult.Value);
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<List<AccountDto>>>(okResult.Value);
+        Assert.True(mbResult.IsSuccess);
+        Assert.Equal(accounts, mbResult.Value);
     }
 
     [Fact]
-    public async Task CreateAccount_InvalidCurrency_ThrowsValidationException()
+    public async Task GetAccounts_InvalidType_ReturnsBadRequest()
     {
         // Arrange
-        var command = new CreateAccountCommand
+        var ownerId = Guid.NewGuid();
+        var query = new GetAccountsQuery { OwnerId = ownerId, Type = (AccountType)999 };
+        var validationErrors = new Dictionary<string, string[]> { { "Type", new[] { "Недопустимый тип счёта" } } };
+        _mediatorMock.Setup(m => m.Send(It.Is<GetAccountsQuery>(q => q.OwnerId == ownerId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<List<AccountDto>>.Failure(validationErrors));
+
+        // Act
+        var result = await _controller.GetAccounts(ownerId, (AccountType)999);
+
+        // Assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<List<AccountDto>>>(badRequestResult.Value);
+        Assert.False(mbResult.IsSuccess);
+        Assert.Equal("Validation failed", mbResult.Error);
+        Assert.Contains("Type", mbResult.ValidationErrors);
+        Assert.Equal("Недопустимый тип счёта", mbResult.ValidationErrors["Type"][0]);
+    }
+
+    [Fact]
+    public async Task PatchAccount_ValidCommand_ReturnsOkResult()
+    {
+        // Arrange
+        var accountId = Guid.NewGuid();
+        var command = new PatchAccountCommand
         {
+            Id = accountId,
+            Request = new PatchAccountRequestDto { Currency = "USD", Type = AccountType.Deposit, InterestRate = 2.0m }
+        };
+        var accountDto = new AccountDto
+        {
+            AccountId = accountId,
             OwnerId = Guid.NewGuid(),
+            Currency = "USD",
             AccountType = AccountType.Deposit,
-            Currency = "invalid",
+            InterestRate = 2.0m,
             Balance = 1000,
-            InterestRate = 1.5m
-        };
-        var validationFailure = new ValidationFailure("Currency", "Валюта не поддерживается")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.CreateAccount(command));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Currency", error.PropertyName);
-        Assert.Equal("Валюта не поддерживается", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-        // Удалена проверка ErrorCode, так как валидатор не задаёт его
-    }
-
-
-    [Fact]
-    public async Task UpdateAccount_ValidRequest_ReturnsOkResult()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new UpdateAccountRequestDto
-        {
-            OwnerId = Guid.NewGuid(),
-            Type = AccountType.Deposit,
-            Currency = "USD",
-            InterestRate = 1.5m
-        };
-        var command = new UpdateAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var accountDto = new AccountDto
-        {
-            AccountId = id,
-            OwnerId = request.OwnerId,
-            AccountType = request.Type,
-            Currency = request.Currency,
-            Balance = 1000,
-            InterestRate = request.InterestRate,
             OpeningDate = DateTime.UtcNow
         };
-        _mediatorMock.Setup(m => m.Send(It.Is<UpdateAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ReturnsAsync(accountDto);
+        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Success(accountDto));
 
         // Act
-        var result = await _controller.UpdateAccount(id, request);
+        var result = await _controller.PatchAccount(accountId, command.Request);
 
         // Assert
         var okResult = Assert.IsType<OkObjectResult>(result);
         Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
-        Assert.Equal(accountDto, okResult.Value);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(okResult.Value);
+        Assert.True(mbResult.IsSuccess);
+        Assert.Equal(accountDto, mbResult.Value);
     }
 
     [Fact]
-    public async Task UpdateAccount_InvalidCurrency_ThrowsValidationException()
+    public async Task PatchAccount_NonExistingAccount_ReturnsBadRequest()
     {
         // Arrange
-        var id = Guid.NewGuid();
-        var request = new UpdateAccountRequestDto
-        {
-            OwnerId = Guid.NewGuid(),
-            Type = AccountType.Deposit,
-            Currency = "INVALID",
-            InterestRate = 1.5m
-        };
-        var command = new UpdateAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var validationFailure = new ValidationFailure("Request.Currency", "Валюта не поддерживается")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(It.Is<UpdateAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.UpdateAccount(id, request));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Request.Currency", error.PropertyName);
-        Assert.Equal("Валюта не поддерживается", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-    }
-
-    [Fact]
-    public async Task UpdateAccount_NonExistingAccount_ThrowsValidationException()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new UpdateAccountRequestDto
-        {
-            OwnerId = Guid.NewGuid(),
-            Type = AccountType.Deposit,
-            Currency = "USD",
-            InterestRate = 1.5m
-        };
-        var command = new UpdateAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var validationFailure = new ValidationFailure("Id", "Счет не найден")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(It.Is<UpdateAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.UpdateAccount(id, request));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Id", error.PropertyName);
-        Assert.Equal("Счет не найден", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-    }
-
-    [Fact]
-    public async Task PatchAccount_ValidRequest_ReturnsOkResult()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new PatchAccountRequestDto
-        {
-            Currency = "USD",
-            Type = AccountType.Deposit,
-            InterestRate = 1.5m,
-            Balance = 2000
-        };
+        var accountId = Guid.NewGuid();
         var command = new PatchAccountCommand
         {
-            Id = id,
-            Request = request
+            Id = accountId,
+            Request = new PatchAccountRequestDto { Currency = "USD", Type = AccountType.Deposit, InterestRate = 2.0m }
+        };
+        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Failure("Счёт не найден"));
+
+        // Act
+        var result = await _controller.PatchAccount(accountId, command.Request);
+
+        // Assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
+        Assert.False(mbResult.IsSuccess);
+        Assert.Equal("Счёт не найден", mbResult.Error);
+    }
+
+    [Fact]
+    public async Task UpdateAccount_ValidCommand_ReturnsOkResult()
+    {
+        // Arrange
+        var accountId = Guid.NewGuid();
+        var command = new UpdateAccountCommand
+        {
+            Id = accountId,
+            Request = new UpdateAccountRequestDto { Currency = "USD", Type = AccountType.Deposit, InterestRate = 2.0m }
         };
         var accountDto = new AccountDto
         {
-            AccountId = id,
+            AccountId = accountId,
             OwnerId = Guid.NewGuid(),
-            AccountType = request.Type!.Value,
-            Currency = request.Currency,
-            Balance = request.Balance!.Value,
-            InterestRate = request.InterestRate,
+            Currency = "USD",
+            AccountType = AccountType.Deposit,
+            InterestRate = 2.0m,
+            Balance = 1000,
             OpeningDate = DateTime.UtcNow
         };
-        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ReturnsAsync(accountDto);
+        _mediatorMock.Setup(m => m.Send(It.Is<UpdateAccountCommand>(c => c.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Success(accountDto));
 
         // Act
-        var result = await _controller.PatchAccount(id, request);
+        var result = await _controller.UpdateAccount(accountId, command.Request);
 
-        // Assert
+        // Act
         var okResult = Assert.IsType<OkObjectResult>(result);
         Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
-        Assert.Equal(accountDto, okResult.Value);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(okResult.Value);
+        Assert.True(mbResult.IsSuccess);
+        Assert.Equal(accountDto, mbResult.Value);
     }
 
     [Fact]
-    public async Task PatchAccount_InvalidCurrency_ThrowsValidationException()
+    public async Task UpdateAccount_NonExistingAccount_ReturnsBadRequest()
     {
         // Arrange
-        var id = Guid.NewGuid();
-        var request = new PatchAccountRequestDto
+        var accountId = Guid.NewGuid();
+        var command = new UpdateAccountCommand
         {
-            Currency = "INVALID",
-            Type = AccountType.Deposit,
-            InterestRate = 1.5m,
-            Balance = 2000
+            Id = accountId,
+            Request = new UpdateAccountRequestDto { Currency = "USD", Type = AccountType.Deposit, InterestRate = 2.0m }
         };
-        var command = new PatchAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var validationFailure = new ValidationFailure("Request.Currency", "Валюта не поддерживается")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
+        _mediatorMock.Setup(m => m.Send(It.Is<UpdateAccountCommand>(c => c.Id == accountId), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(MbResult<AccountDto>.Failure("Счёт не найден"));
 
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.PatchAccount(id, request));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Request.Currency", error.PropertyName);
-        Assert.Equal("Валюта не поддерживается", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-    }
+        // Act
+        var result = await _controller.UpdateAccount(accountId, command.Request);
 
-    [Fact]
-    public async Task PatchAccount_CurrencyChangeWithTransactions_ThrowsValidationException()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new PatchAccountRequestDto
-        {
-            Currency = "EUR"
-        };
-        var command = new PatchAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var validationFailure = new ValidationFailure("Currency", "Нельзя изменить валюту счета с существующими транзакциями")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.PatchAccount(id, request));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Currency", error.PropertyName);
-        Assert.Equal("Нельзя изменить валюту счета с существующими транзакциями", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-    }
-
-    [Fact]
-    public async Task PatchAccount_NonExistingAccount_ThrowsValidationException()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new PatchAccountRequestDto
-        {
-            Currency = "USD",
-            Type = AccountType.Deposit,
-            InterestRate = 1.5m,
-            Balance = 2000
-        };
-        var command = new PatchAccountCommand
-        {
-            Id = id,
-            Request = request
-        };
-        var validationFailure = new ValidationFailure("Id", "Счет не найден")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(It.Is<PatchAccountCommand>(c => c.Id == id && c.Request == request), It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.PatchAccount(id, request));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Id", error.PropertyName);
-        Assert.Equal("Счет не найден", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-    }
-
-    [Fact]
-    public async Task CreateTransaction_InsufficientFunds_ThrowsValidationException()
-    {
-        // Arrange
-        var command = new CreateTransactionCommand
-        {
-            AccountId = Guid.NewGuid(),
-            Type = TransactionType.Debit,
-            Amount = 1000,
-            Currency = "USD",
-            Description = "Test"
-        };
-        var validationFailure = new ValidationFailure("Amount", "Недостаточно средств на счёте")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.CreateTransaction(command));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Amount", error.PropertyName);
-        Assert.Equal("Недостаточно средств на счёте", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-        // Удалена проверка ErrorCode, так как валидатор не задаёт его
-    }
-
-    [Fact]
-    public async Task PerformTransfer_DifferentCurrencies_ThrowsValidationException()
-    {
-        // Arrange
-        var command = new PerformTransferCommand
-        {
-            FromAccountId = Guid.NewGuid(),
-            ToAccountId = Guid.NewGuid(),
-            Amount = 500,
-            Currency = "USD",
-            Description = "Test"
-        };
-        var validationFailure = new ValidationFailure("Currency", "Валюты счетов не совпадают")
-        {
-            Severity = Severity.Error
-        };
-        var validationException = new ValidationException(new[] { validationFailure });
-        _mediatorMock.Setup(m => m.Send(command, It.IsAny<CancellationToken>())).ThrowsAsync(validationException);
-
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => _controller.PerformTransfer(command));
-        Assert.Single(exception.Errors);
-        var error = exception.Errors.First();
-        Assert.Equal("Currency", error.PropertyName);
-        Assert.Equal("Валюты счетов не совпадают", error.ErrorMessage);
-        Assert.Equal(Severity.Error, error.Severity);
-        // Удалена проверка ErrorCode, так как валидатор не задаёт его
+        // Assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
+        var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
+        Assert.False(mbResult.IsSuccess);
+        Assert.Equal("Счёт не найден", mbResult.Error);
     }
 }

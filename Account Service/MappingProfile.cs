@@ -6,6 +6,8 @@ using AutoMapper;
 using Account_Service.Transactions.AddTransaction.Command;
 using Account_Service.Accounts.UpdateAccount.Command;
 using Account_Service.Accounts.PatchAccount.Command;
+// ReSharper disable UnusedParameter.Local
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service
 {
@@ -44,7 +46,8 @@ namespace Account_Service
 
             // CreateTransactionCommand -> Transaction
             CreateMap<CreateTransactionCommand, Transaction>()
-                .ForMember(dest => dest.TransactionId, opt => opt.MapFrom(_ => Guid.NewGuid()));
+                .ForMember(dest => dest.TransactionId, opt => opt.MapFrom(_ => Guid.NewGuid()))
+                .ForMember(dest => dest.DateTime, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             // PerformTransferCommand -> Transaction
             CreateMap<PerformTransferCommand, Transaction>()

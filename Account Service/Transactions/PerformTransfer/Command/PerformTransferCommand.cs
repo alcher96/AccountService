@@ -1,13 +1,14 @@
 ﻿using MediatR;
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Transactions.PerformTransfer.Command
 {
-    public class PerformTransferCommand : IRequest<TransactionDto[]>
+    public class PerformTransferCommand : IRequest<MbResult<TransactionDto[]>>
     {
         public Guid FromAccountId { get; set; }
         public Guid ToAccountId { get; set; }
         public decimal Amount { get; set; }
-        public string Currency { get; set; }
+        public string? Currency { get; set; }
         public string? Description { get; set; }
     }
 }

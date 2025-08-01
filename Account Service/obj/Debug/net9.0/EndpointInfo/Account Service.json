@@ -362,6 +362,26 @@
           "204": {
             "description": "Счёт успешно удалён"
           },
+          "400": {
+            "description": "Ошибка валидации",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Счёт не найден",
             "content": {
@@ -385,10 +405,10 @@
         }
       }
     },
-    "/api/Account/transactions": {
+    "/api/Transaction": {
       "post": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Регистрирует транзакцию по счёту",
         "description": "Создаёт новую транзакцию (дебетовую или кредитную) для указанного счёта.\r\nВалюта транзакции должна совпадать с валютой счёта.",
@@ -459,10 +479,10 @@
         }
       }
     },
-    "/api/Account/transfers": {
+    "/api/Transaction/transfers": {
       "post": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Выполняет перевод между счетами",
         "description": "Создаёт две транзакции: дебетовую для счёта отправителя и кредитную для счёта получателя.\r\nВалюта перевода должна совпадать с валютами обоих счетов.",
@@ -533,10 +553,10 @@
         }
       }
     },
-    "/api/Account/{accountId}/transactions": {
+    "/api/Transaction/{accountId}": {
       "get": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Получает выписку по счёту за период",
         "description": "Возвращает список транзакций для указанного счёта, отфильтрованный по датам (опционально).\r\nЕсли даты не указаны, возвращаются все транзакции.",

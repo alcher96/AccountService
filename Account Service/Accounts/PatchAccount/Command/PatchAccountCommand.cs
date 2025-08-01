@@ -1,11 +1,12 @@
 ﻿using MediatR;
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Accounts.PatchAccount.Command
 {
-    public class PatchAccountCommand : IRequest<AccountDto>
+    public class PatchAccountCommand : IRequest<MbResult<AccountDto>>
     {
         public Guid Id { get; set; }
       
-        public PatchAccountRequestDto Request { get; set; }
+        public PatchAccountRequestDto? Request { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Account_Service.Accounts;
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Repositories
 {
@@ -27,7 +28,7 @@ namespace Account_Service.Repositories
 
         public Task<Account> GetByIdAsync(Guid id)
         {
-            return Task.FromResult(_accounts.FirstOrDefault(a => a.AccountId == id));
+            return Task.FromResult(_accounts.FirstOrDefault(a => a.AccountId == id))!;
         }
 
         public Task<List<Account>> GetAllAsync(Guid? ownerId, AccountType? type)

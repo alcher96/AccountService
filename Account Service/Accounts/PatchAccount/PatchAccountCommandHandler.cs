@@ -3,24 +3,42 @@ using Account_Service.Repositories;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Accounts.PatchAccount
 {
-    public class PatchAccountCommandHandler(IAccountRepository accountRepository, IMapper mapper)
-        : IRequestHandler<PatchAccountCommand, AccountDto>
+    // ReSharper disable once UnusedMember.Global
+    public class PatchAccountCommandHandler : IRequestHandler<PatchAccountCommand, MbResult<AccountDto>>
     {
-        public async Task<AccountDto> Handle(PatchAccountCommand request, CancellationToken cancellationToken)
+        private readonly IAccountRepository _accountRepository;
+        private readonly IMapper _mapper;
+        private readonly IValidator<PatchAccountCommand> _validator;
+
+        public PatchAccountCommandHandler(IAccountRepository accountRepository, IMapper mapper,
+            IValidator<PatchAccountCommand> validator)
         {
-            var account = await accountRepository.GetByIdAsync(request.Id);
-            if (account == null)
-                throw new ValidationException("Счет не найден");
+            _accountRepository = accountRepository;
+            _mapper = mapper;
+            _validator = validator;
+        }
 
-            if (request.Request.Currency != null && account.Transactions.Count > 0)
-                throw new ValidationException("Нельзя изменить валюту счета с существующими транзакциями");
+        public async Task<MbResult<AccountDto>> Handle(PatchAccountCommand request, CancellationToken cancellationToken)
+        {
+            // Валидация команды
+            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors
+                    .GroupBy(e => e.PropertyName)
+                    .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray());
+                return MbResult<AccountDto>.Failure(errors);
+            }
 
-            mapper.Map(request.Request, account);
-            await accountRepository.UpdateAsync(account);
-            return mapper.Map<AccountDto>(account);
+            var account = await _accountRepository.GetByIdAsync(request.Id);
+            _mapper.Map(request.Request, account);
+            await _accountRepository.UpdateAsync(account);
+            var accountDto = _mapper.Map<AccountDto>(account);
+            return MbResult<AccountDto>.Success(accountDto);
         }
     }
 }

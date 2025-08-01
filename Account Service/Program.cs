@@ -1,4 +1,5 @@
 using Account_Service;
+using Account_Service.Accounts;
 using Account_Service.Extensions;
 using Account_Service.Repositories;
 using FluentValidation;
@@ -22,6 +23,18 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? Directory.GetCurrentDirectory(), xmlFile);
     options.IncludeXmlComments(xmlPath);
+    //добавляем допюсхему для MbResult
+    options.MapType<MbResult<AccountDto>>(() => new OpenApiSchema
+    {
+        Type = "object",
+        Properties = new Dictionary<string, OpenApiSchema>
+        {
+            { "isSuccess", new OpenApiSchema { Type = "boolean" } },
+            { "value", new OpenApiSchema { Type = "object", Nullable = true } },
+            { "error", new OpenApiSchema { Type = "string", Nullable = true } },
+            { "validationErrors", new OpenApiSchema { Type = "object", Nullable = true } }
+        }
+    });
 });
 
 
@@ -35,6 +48,17 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //заглушка для репозитория
 builder.Services.AddSingleton<IAccountRepository, InMemoryAccountRepository>();
+
+// Настройка CORS (Allow All)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", corsPolicyBuilder =>
+    {
+        corsPolicyBuilder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -54,9 +78,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseFluentValidationExceptionHandler();
+//app.UseFluentValidationExceptionHandler();
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 

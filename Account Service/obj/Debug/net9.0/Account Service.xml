@@ -95,9 +95,20 @@
             <param name="id">Идентификатор счёта</param>
             <returns>Нет содержимого</returns>
             <response code="204">Счёт успешно удалён</response>
+            <response code="400">Ошибка валидации</response>
             <response code="404">Счёт не найден</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.CreateTransaction(Account_Service.Transactions.AddTransaction.Command.CreateTransactionCommand)">
+        <member name="T:Account_Service.Transactions.TransactionController">
+            <summary>
+            Контроллер для управления транзакциями
+            </summary>
+        </member>
+        <member name="M:Account_Service.Transactions.TransactionController.#ctor(MediatR.IMediator)">
+            <summary>
+            Контроллер для управления транзакциями
+            </summary>
+        </member>
+        <member name="M:Account_Service.Transactions.TransactionController.CreateTransaction(Account_Service.Transactions.AddTransaction.Command.CreateTransactionCommand)">
             <summary>
             Регистрирует транзакцию по счёту
             </summary>
@@ -111,7 +122,7 @@
             <response code="400">Недопустимые данные (например, недостаточно средств)</response>
             <response code="404">Счёт не найден</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.PerformTransfer(Account_Service.Transactions.PerformTransfer.Command.PerformTransferCommand)">
+        <member name="M:Account_Service.Transactions.TransactionController.PerformTransfer(Account_Service.Transactions.PerformTransfer.Command.PerformTransferCommand)">
             <summary>
             Выполняет перевод между счетами
             </summary>
@@ -125,7 +136,7 @@
             <response code="400">Недопустимые данные (например, недостаточно средств или разные валюты)</response>
             <response code="404">Один из счетов не найден</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.GetAccountTransactions(System.Guid,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+        <member name="M:Account_Service.Transactions.TransactionController.GetAccountTransactions(System.Guid,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
             Получает выписку по счёту за период
             </summary>
