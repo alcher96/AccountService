@@ -1,6 +1,6 @@
 # AccountService API
 
-AccountService API — это RESTful API для управления банковскими счетами, транзакциями и переводами. Проект построен на .NET с использованием MediatR, FluentValidation, AutoMapper и Swashbuckle для документации API. Поддерживаются операции создания, обновления, частичного обновления и удаления счетов, а также регистрация транзакций и переводов между счетами. Проект сделан в контексте курса по создания микросервиса "Банковские счета"
+AccountService API — это RESTful API для управления банковскими счетами, транзакциями и переводами. Проект построен на .NET с использованием MediatR, FluentValidation, AutoMapper и Swashbuckle для документации API. Поддерживаются операции создания, обновления, частичного обновления и удаления счетов, а также регистрация транзакций и переводов между счетами. Проект обновлен в контексте второго задания курса по создания микросервиса "Банковские счета"
 
 ## Основные возможности
 
@@ -19,12 +19,36 @@ AccountService API — это RESTful API для управления банко
 - **FluentValidation**: Для валидации входных данных.
 - **AutoMapper**: Для маппинга между моделями и DTO.
 - **Swashbuckle.AspNetCore**: Для генерации Swagger-документации.
+- **Keycloak**: Для JWT-аутентификации.
 - **Moq**: Для модульного тестирования.
 - **InMemoryAccountRepository**: Заглушка репозитория для хранения данных в памяти.
 
+
+
+## Установка и запуск
+
+1. **Клонируйте репозиторий**:
+   ```bash
+   git clone https://github.com/alcher96/AccountService
+   в папке проекта Account Service
+   docker compose up -d --build
+   ```
 ## Доступ к Swagger UI**:
    - В режиме разработки приложение автоматически перенаправляет с корневого URL (`/`) на `/swagger`.
    - Откройте в браузере: `(https://localhost:7299)`.
+
+### Получение токена
+
+Воспользуйтесь файлом для postman для получения токена или используйте curl
+
+curl -v -X POST 'http://localhost:8080/realms/account-service/protocol/openid-connect/token' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'client_id=account-service-client' \
+  -d 'client_secret=your-actual-client-secret' \
+  -d 'username=test-user' \
+  -d 'password=test-password' \
+  -d 'grant_type=password' \
+  -d 'scope=openid profile email'
 
 ## Эндпоинты API
 ```
@@ -38,7 +62,13 @@ AccountService API — это RESTful API для управления банко
 [POST]/api/Account/transfers - Выполнение перевода между счетами
 [GET]/api/Account/{id}/transactions - Получение выписки по счету за период
 ```
+
+## Аутентификация
+
+API использует JWT-аутентификацию через Keycloak. Для доступа к защищённым эндпоинтам (`/api/Account`, `/api/Transaction`) требуется токен с ролью `user`.
+
 ## Примеры использования API
+
 
 ### Создание счёта
 
@@ -46,99 +76,105 @@ AccountService API — это RESTful API для управления банко
 ```http
 POST /api/Account
 Content-Type: application/json
+Authorization: Bearer <access_token>
 
 {
-    "ownerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "accountType": "Checking",
-    "currency": "RUB",
-    "balance": 222,
-    "interestRate": null
+  "accountType": "Checking",
+  "currency": "USD",
+  "interestRate": null
 }
 ```
 
 **Ответ** (HTTP 201 Created):
 ```json
 {
-    "accountId": "ec47bdcc-e465-460c-83a1-98ae0522280e",
+  "isSuccess": true,
+  "value": {
+    "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "ownerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "accountType": "Checking",
-    "currency": "RUB",
-    "balance": 222,
-    "interestRate": null,
-    "openingDate": "2025-07-27T14:08:00Z",
-    "closingDate": null
-}
-```
-
-### Частичное обновление счёта
-
-**Запрос**:
-```http
-PATCH /api/Account/ec47bdcc-e465-460c-83a1-98ae0522280e
-Content-Type: application/json
-
-{
     "currency": "USD",
-    "balance": 500
+    "balance": 0,
+    "interestRate": 0,
+    "openingDate": "2025-08-03T18:58:00Z",
+    "closingDate": null
+  },
+  "mbError": null,
+  "validationErrors": null
 }
 ```
 
-**Ответ** (HTTP 200 OK):
+**Ответ** (HTTP 400 Bad Request):
 ```json
 {
-    "accountId": "ec47bdcc-e465-460c-83a1-98ae0522280e",
-    "ownerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "accountType": "Checking",
-    "currency": "USD",
-    "balance": 500,
-    "interestRate": null,
-    "openingDate": "2025-07-27T14:08:00Z",
-    "closingDate": null
+  "isSuccess": false,
+  "value": null,
+  "mbError": "Validation failed",
+  "validationErrors": {
+    "currency": ["Unsupported currency"],
+    "accountType": ["Invalid account type"]
+  }
 }
 ```
 
-### Перевод между счетами
+**Ответ** (HTTP 401 Unauthorized):
+```json
+{
+  "isSuccess": false,
+  "value": null,
+  "mbError": "Unauthorized: Invalid or missing token",
+  "validationErrors": null
+}
+```
 
 **Запрос**:
 ```http
-POST /api/Account/transfers
+POST /api/Transaction
 Content-Type: application/json
+Authorization: Bearer <access_token>
 
 {
-    "fromAccountId": "ec47bdcc-e465-460c-83a1-98ae0522280e",
-    "toAccountId": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e",
-    "amount": 100,
-    "currency": "USD",
-    "description": "Test transfer"
+  "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "amount": 100.50,
+  "transactionType": "Deposit",
+  "description": "Initial deposit"
 }
 ```
 
 **Ответ** (HTTP 201 Created):
 ```json
-[
-    {
-        "id": "1a2b3c4d-5e6f-7a8b-9c0d-e1f2a3b4c5d6",
-        "accountId": "ec47bdcc-e465-460c-83a1-98ae0522280e",
-        "type": "Debit",
-        "amount": 100,
-        "currency": "USD",
-        "description": "Test transfer",
-        "dateTime": "2025-07-27T14:08:00Z"
-    },
-    {
-        "id": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7f",
-        "accountId": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e",
-        "type": "Credit",
-        "amount": 100,
-        "currency": "USD",
-        "description": "Test transfer",
-        "dateTime": "2025-07-27T14:08:00Z"
-    }
-]
+{
+  "isSuccess": true,
+  "value": {
+    "transactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "amount": 100.50,
+    "transactionType": "Deposit",
+    "transactionDate": "2025-08-03T18:58:00Z",
+    "description": "Initial deposit"
+  },
+  "mbError": null,
+  "validationErrors": null
+}
+```
+
+**Ответ** (HTTP 400 Bad Request):
+```json
+{
+  "isSuccess": false,
+  "value": null,
+  "mbError": "Validation failed",
+  "validationErrors": {
+    "amount": ["Amount must be positive"],
+    "transactionType": ["Invalid transaction type"]
+  }
+}
 ```
 
 ## Особенности реализации
 
-- **Валидация**: Все команды валидируются с помощью FluentValidation. Поддерживаемые валюты (`RUB`, `USD`, `EUR`) вынесены в общий класс `Constants` для устранения дублирования.
-- **Swagger**: В режиме разработки корневой URL (`/`) перенаправляет на Swagger UI для удобного тестирования API.
-- **CQRS**: MediatR реализует паттерн CQRS, разделяя команды (модификация данных) и запросы (чтение данных).
+- **Аутентификация**: Интеграция с Keycloak через JWT-токены. Все защищённые эндпоинты требуют заголовок `Authorization: Bearer <access_token>` с ролью `user`.
+- **MbResult<T>**: Все ответы API возвращаются в формате `MbResult<T>`, включающем поля `isSuccess`, `value`, `mbError` и `validationErrors` для единообразной обработки успехов и ошибок.
+- **CORS**: Настроен для поддержки кросс-доменных запросов, позволяя интеграцию с фронтенд-приложениями.
+- **Валидация**: FluentValidation проверяет входные данные. Поддерживаемые валюты (`RUB`, `USD`, `EUR`) и типы счетов (`Checking`, `Deposit`, `Credit`) вынесены в класс `Constants`.
+- **CQRS**: MediatR разделяет команды (модификация данных) и запросы (чтение данных).
