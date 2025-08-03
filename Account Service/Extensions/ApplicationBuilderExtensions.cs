@@ -2,6 +2,7 @@
 using System.Text.Json;
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
+// ReSharper disable UnusedMember.Global
 #pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Extensions

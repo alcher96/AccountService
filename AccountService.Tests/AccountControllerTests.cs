@@ -1,8 +1,6 @@
 ﻿using Account_Service.Accounts;
 using Account_Service.Accounts.AddAccount.Command;
 using Account_Service.Accounts.GetAccount.Query;
-using FluentValidation;
-using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,7 +53,7 @@ public class AccountControllerTests
         var createdResult = Assert.IsType<CreatedAtActionResult>(result);
         Assert.Equal(StatusCodes.Status201Created, createdResult.StatusCode);
         Assert.Equal(nameof(AccountController.GetAccountById), createdResult.ActionName);
-        Assert.Equal(accountDto.AccountId, createdResult.RouteValues["id"]);
+        Assert.Equal(accountDto.AccountId, createdResult.RouteValues!["id"]);
         var mbResult = Assert.IsType<MbResult<AccountDto>>(createdResult.Value);
         Assert.True(mbResult.IsSuccess);
         Assert.Equal(accountDto, mbResult.Value);
@@ -72,7 +70,7 @@ public class AccountControllerTests
             AccountType = AccountType.Deposit,
             InterestRate = 1.5m
         };
-        var validationErrors = new Dictionary<string, string[]> { { "Currency", new[] { "Валюта не поддерживается" } } };
+        var validationErrors = new Dictionary<string, string[]> { { "Currency", ["Валюта не поддерживается"] } };
         _mediatorMock.Setup(m => m.Send(It.Is<CreateAccountCommand>(c => c.OwnerId == command.OwnerId), It.IsAny<CancellationToken>()))
             .ReturnsAsync(MbResult<AccountDto>.Failure(validationErrors));
 
@@ -84,9 +82,9 @@ public class AccountControllerTests
         Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
         var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
         Assert.False(mbResult.IsSuccess);
-        Assert.Equal("Validation failed", mbResult.Error);
-        Assert.Contains("Currency", mbResult.ValidationErrors);
-        Assert.Equal("Валюта не поддерживается", mbResult.ValidationErrors["Currency"][0]);
+        Assert.Equal("Validation failed", mbResult.MbError);
+        Assert.Contains("Currency", mbResult.ValidationErrors!);
+        Assert.Equal("Валюта не поддерживается", mbResult.ValidationErrors!["Currency"][0]);
     }
 
     [Fact]
@@ -94,7 +92,6 @@ public class AccountControllerTests
     {
         // Arrange
         var accountId = Guid.NewGuid();
-        var query = new GetAccountByIdQuery { Id = accountId };
         var accountDto = new AccountDto
         {
             AccountId = accountId,
@@ -124,7 +121,6 @@ public class AccountControllerTests
     {
         // Arrange
         var accountId = Guid.NewGuid();
-        var query = new GetAccountByIdQuery { Id = accountId };
         _mediatorMock.Setup(m => m.Send(It.Is<GetAccountByIdQuery>(q => q.Id == accountId), It.IsAny<CancellationToken>()))
             .ReturnsAsync(MbResult<AccountDto>.Failure("Счёт не найден"));
 
@@ -136,7 +132,7 @@ public class AccountControllerTests
         Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
         var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
         Assert.False(mbResult.IsSuccess);
-        Assert.Equal("Счёт не найден", mbResult.Error);
+        Assert.Equal("Счёт не найден", mbResult.MbError);
     }
 
     [Fact]
@@ -144,10 +140,9 @@ public class AccountControllerTests
     {
         // Arrange
         var ownerId = Guid.NewGuid();
-        var query = new GetAccountsQuery { OwnerId = ownerId, Type = AccountType.Deposit };
         var accounts = new List<AccountDto>
         {
-            new AccountDto
+            new()
             {
                 AccountId = Guid.NewGuid(),
                 OwnerId = ownerId,
@@ -177,8 +172,7 @@ public class AccountControllerTests
     {
         // Arrange
         var ownerId = Guid.NewGuid();
-        var query = new GetAccountsQuery { OwnerId = ownerId, Type = (AccountType)999 };
-        var validationErrors = new Dictionary<string, string[]> { { "Type", new[] { "Недопустимый тип счёта" } } };
+        var validationErrors = new Dictionary<string, string[]> { { "Type", ["Недопустимый тип счёта"] } };
         _mediatorMock.Setup(m => m.Send(It.Is<GetAccountsQuery>(q => q.OwnerId == ownerId), It.IsAny<CancellationToken>()))
             .ReturnsAsync(MbResult<List<AccountDto>>.Failure(validationErrors));
 
@@ -190,9 +184,9 @@ public class AccountControllerTests
         Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
         var mbResult = Assert.IsType<MbResult<List<AccountDto>>>(badRequestResult.Value);
         Assert.False(mbResult.IsSuccess);
-        Assert.Equal("Validation failed", mbResult.Error);
-        Assert.Contains("Type", mbResult.ValidationErrors);
-        Assert.Equal("Недопустимый тип счёта", mbResult.ValidationErrors["Type"][0]);
+        Assert.Equal("Validation failed", mbResult.MbError);
+        Assert.Contains("Type", mbResult.ValidationErrors!);
+        Assert.Equal("Недопустимый тип счёта", mbResult.ValidationErrors!["Type"][0]);
     }
 
     [Fact]
@@ -250,7 +244,7 @@ public class AccountControllerTests
         Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
         var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
         Assert.False(mbResult.IsSuccess);
-        Assert.Equal("Счёт не найден", mbResult.Error);
+        Assert.Equal("Счёт не найден", mbResult.MbError);
     }
 
     [Fact]
@@ -308,6 +302,6 @@ public class AccountControllerTests
         Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
         var mbResult = Assert.IsType<MbResult<AccountDto>>(badRequestResult.Value);
         Assert.False(mbResult.IsSuccess);
-        Assert.Equal("Счёт не найден", mbResult.Error);
+        Assert.Equal("Счёт не найден", mbResult.MbError);
     }
 }

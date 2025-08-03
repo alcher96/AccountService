@@ -1,0 +1,59 @@
+{
+  "realm": "account-service",
+  "enabled": true,
+  "attributes": {
+    "issuer": "http://keycloak:8080/realms/account-service"
+  },
+  "clients": [
+    {
+      "clientId": "account-service-client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "your-actual-client-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": ["https://localhost:7299/*"],
+      "webOrigins": ["https://localhost:7299"],
+      "protocol": "openid-connect",
+      "attributes": {
+        "use.refresh.tokens": "true"
+      },
+      "protocolMappers": [
+        {
+          "name": "audience-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "account",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "description": "User role"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "test-user",
+      "enabled": true,
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "test-user@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "test-password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["user"]
+    }
+  ]
+}

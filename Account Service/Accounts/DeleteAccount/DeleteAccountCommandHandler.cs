@@ -7,22 +7,15 @@ using MediatR;
 namespace Account_Service.Accounts.DeleteAccount
 {
     // ReSharper disable once UnusedMember.Global
-    public class DeleteAccountCommandHandler : IRequestHandler<DeleteAccountCommand, MbResult<Unit>>
+    public class DeleteAccountCommandHandler(
+        IAccountRepository accountRepository,
+        IValidator<DeleteAccountCommand> validator)
+        : IRequestHandler<DeleteAccountCommand, MbResult<Unit>>
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly IValidator<DeleteAccountCommand> _validator;
-
-        public DeleteAccountCommandHandler(IAccountRepository accountRepository,
-            IValidator<DeleteAccountCommand> validator)
-        {
-            _accountRepository = accountRepository;
-            _validator = validator;
-        }
-
         public async Task<MbResult<Unit>> Handle(DeleteAccountCommand request, CancellationToken cancellationToken)
         {
             // Валидация команды
-            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 var errors = validationResult.Errors
@@ -30,8 +23,8 @@ namespace Account_Service.Accounts.DeleteAccount
                     .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray());
                 return MbResult<Unit>.Failure(errors);
             }
-            var account = await _accountRepository.GetByIdAsync(request.Id);
-            await _accountRepository.DeleteAsync(request.Id);
+            await accountRepository.GetByIdAsync(request.Id);
+            await accountRepository.DeleteAsync(request.Id);
 
             return MbResult<Unit>.Success(Unit.Value);
         }

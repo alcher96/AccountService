@@ -8,25 +8,17 @@ using MediatR;
 namespace Account_Service.Accounts.AddAccount
 {
     // ReSharper disable once UnusedMember.Global
-    public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, MbResult<AccountDto>>
+    public class CreateAccountCommandHandler(
+        IAccountRepository accountRepository,
+        IMapper mapper,
+        IValidator<CreateAccountCommand> validator)
+        : IRequestHandler<CreateAccountCommand, MbResult<AccountDto>>
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly IMapper _mapper;
-        private readonly IValidator<CreateAccountCommand> _validator;
-
-        public CreateAccountCommandHandler(IAccountRepository accountRepository, IMapper mapper,
-            IValidator<CreateAccountCommand> validator)
-        {
-            _accountRepository = accountRepository;
-            _mapper = mapper;
-            _validator = validator;
-        }
-
         public async Task<MbResult<AccountDto>> Handle(CreateAccountCommand request,
             CancellationToken cancellationToken)
         {
             // Валидация команды
-            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 var errors = validationResult.Errors
@@ -35,9 +27,9 @@ namespace Account_Service.Accounts.AddAccount
                 return MbResult<AccountDto>.Failure(errors);
             }
 
-            var account = _mapper.Map<Account>(request);
-            await _accountRepository.AddAsync(account);
-            var accountDto = _mapper.Map<AccountDto>(account);
+            var account = mapper.Map<Account>(request);
+            await accountRepository.AddAsync(account);
+            var accountDto = mapper.Map<AccountDto>(account);
             return MbResult<AccountDto>.Success(accountDto);
         }
     }

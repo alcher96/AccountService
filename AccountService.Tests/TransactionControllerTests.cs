@@ -3,12 +3,10 @@ using Account_Service.Transactions;
 using Account_Service.Transactions.AddTransaction.Command;
 using Account_Service.Transactions.GetAccountTransactions.Query;
 using Account_Service.Transactions.PerformTransfer.Command;
-using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using FluentValidation.Results;
 using Account_Service;
 
 namespace AccountService.Tests
@@ -77,7 +75,7 @@ namespace AccountService.Tests
                 Description = "Test withdrawal"
             };
             var validationErrors = new Dictionary<string, string[]>
-                { { "Amount", new[] { "Недостаточно средств на счёте" } } };
+                { { "Amount", ["Недостаточно средств на счёте"] } };
             _mediatorMock.Setup(m => m.Send(It.Is<CreateTransactionCommand>(c => c.AccountId == command.AccountId),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(MbResult<TransactionDto>.Failure(validationErrors));
@@ -90,9 +88,9 @@ namespace AccountService.Tests
             Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
             var mbResult = Assert.IsType<MbResult<TransactionDto>>(badRequestResult.Value);
             Assert.False(mbResult.IsSuccess);
-            Assert.Equal("Validation failed", mbResult.Error);
-            Assert.Contains("Amount", mbResult.ValidationErrors);
-            Assert.Equal("Недостаточно средств на счёте", mbResult.ValidationErrors["Amount"][0]);
+            Assert.Equal("Validation failed", mbResult.MbError);
+            Assert.Contains("Amount", mbResult.ValidationErrors!);
+            Assert.Equal("Недостаточно средств на счёте", mbResult.ValidationErrors!["Amount"][0]);
         }
 
         [Fact]
@@ -162,7 +160,7 @@ namespace AccountService.Tests
                 Description = "Test transfer"
             };
             var validationErrors = new Dictionary<string, string[]>
-                { { "Currency", new[] { "Валюты счетов не совпадают" } } };
+                { { "Currency", ["Валюты счетов не совпадают"] } };
             _mediatorMock.Setup(m =>
                     m.Send(It.Is<PerformTransferCommand>(c => c.FromAccountId == command.FromAccountId),
                         It.IsAny<CancellationToken>()))
@@ -176,9 +174,9 @@ namespace AccountService.Tests
             Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
             var mbResult = Assert.IsType<MbResult<TransactionDto[]>>(badRequestResult.Value);
             Assert.False(mbResult.IsSuccess);
-            Assert.Equal("Validation failed", mbResult.Error);
-            Assert.Contains("Currency", mbResult.ValidationErrors);
-            Assert.Equal("Валюты счетов не совпадают", mbResult.ValidationErrors["Currency"][0]);
+            Assert.Equal("Validation failed", mbResult.MbError);
+            Assert.Contains("Currency", mbResult.ValidationErrors!);
+            Assert.Equal("Валюты счетов не совпадают", mbResult.ValidationErrors!["Currency"][0]);
         }
 
         [Fact]
@@ -190,7 +188,7 @@ namespace AccountService.Tests
             var endDate = DateTime.UtcNow;
             var transactions = new List<TransactionDto>
             {
-                new TransactionDto
+                new()
                 {
                     TransactionId = Guid.NewGuid(),
                     AccountId = accountId,
@@ -224,7 +222,7 @@ namespace AccountService.Tests
             var startDate = DateTime.UtcNow;
             var endDate = DateTime.UtcNow.AddDays(-1);
             var validationErrors = new Dictionary<string, string[]>
-                { { "EndDate", new[] { "Конечная дата не может быть раньше начальной" } } };
+                { { "EndDate", ["Конечная дата не может быть раньше начальной"] } };
             _mediatorMock.Setup(m => m.Send(It.Is<GetAccountTransactionsQuery>(q => q.AccountId == accountId),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(MbResult<List<TransactionDto>>.Failure(validationErrors));
@@ -237,9 +235,9 @@ namespace AccountService.Tests
             Assert.Equal(StatusCodes.Status400BadRequest, badRequestResult.StatusCode);
             var mbResult = Assert.IsType<MbResult<List<TransactionDto>>>(badRequestResult.Value);
             Assert.False(mbResult.IsSuccess);
-            Assert.Equal("Validation failed", mbResult.Error);
-            Assert.Contains("EndDate", mbResult.ValidationErrors);
-            Assert.Equal("Конечная дата не может быть раньше начальной", mbResult.ValidationErrors["EndDate"][0]);
+            Assert.Equal("Validation failed", mbResult.MbError);
+            Assert.Contains("EndDate", mbResult.ValidationErrors!);
+            Assert.Equal("Конечная дата не может быть раньше начальной", mbResult.ValidationErrors!["EndDate"][0]);
         }
     }
 }

@@ -3,6 +3,7 @@ using Account_Service.Transactions.AddTransaction.Command;
 using Account_Service.Transactions.GetAccountTransactions.Query;
 using Account_Service.Transactions.PerformTransfer.Command;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 #pragma warning disable CS1591 // Избыточный xml комментарий
 
@@ -27,10 +28,13 @@ namespace Account_Service.Transactions
         /// <response code="201">Транзакция успешно создана</response>
         /// <response code="400">Недопустимые данные (например, недостаточно средств)</response>
         /// <response code="404">Счёт не найден</response>
+        /// <response code="401">Для запроса требуется аутентификация</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "user")]
         public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionCommand command)
         {
             var result = await mediator.Send(command);
@@ -54,10 +58,13 @@ namespace Account_Service.Transactions
         /// <response code="201">Перевод успешно выполнен</response>
         /// <response code="400">Недопустимые данные (например, недостаточно средств или разные валюты)</response>
         /// <response code="404">Один из счетов не найден</response>
+        /// <response code="401">Для запроса требуется аутентификация</response>
         [HttpPost("transfers")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "user")]
         public async Task<IActionResult> PerformTransfer([FromBody] PerformTransferCommand command)
         {
             var result = await mediator.Send(command);
@@ -83,10 +90,13 @@ namespace Account_Service.Transactions
         /// <response code="200">Выписка успешно возвращена</response>
         /// <response code="400">Недопустимые даты (например, endDate раньше startDate)</response>
         /// <response code="404">Счёт не найден</response>
+        /// <response code="401">Для запроса требуется аутентификация</response>
         [HttpGet("{accountId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(Roles = "user")]
         public async Task<IActionResult> GetAccountTransactions(Guid accountId, [FromQuery] DateTime? startDate,
             [FromQuery] DateTime? endDate)
         {
