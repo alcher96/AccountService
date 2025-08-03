@@ -2,6 +2,8 @@
 using System.Text.Json;
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
+// ReSharper disable UnusedMember.Global
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Extensions
 {
@@ -22,7 +24,7 @@ namespace Account_Service.Extensions
                         {
                             Property = err.PropertyName,
                             Error = err.ErrorMessage,
-                            ErrorCode = err.ErrorCode,
+                            err.ErrorCode,
                             Severity = err.Severity.ToString()
                         });
 

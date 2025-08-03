@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "Banking API",
+    "title": "Account Service API",
     "version": "v1"
   },
   "paths": {
@@ -34,24 +34,61 @@
         },
         "responses": {
           "201": {
-            "description": "Счёт успешно создан"
+            "description": "Счёт успешно создан",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
+                }
+              }
+            }
           },
           "400": {
             "description": "Недопустимые данные (например, неподдерживаемая валюта)",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/AccountDtoMbResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMbResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMbResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectMbResult"
                 }
               }
             }
@@ -84,6 +121,26 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "200": {
             "description": "Список счетов успешно возвращён"
           }
@@ -115,6 +172,26 @@
           },
           "400": {
             "description": "Неверный формат идентификатора",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
             "content": {
               "text/plain": {
                 "schema": {
@@ -236,6 +313,26 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -337,6 +434,26 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
@@ -362,8 +479,48 @@
           "204": {
             "description": "Счёт успешно удалён"
           },
+          "400": {
+            "description": "Ошибка валидации",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Счёт не найден",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
             "content": {
               "text/plain": {
                 "schema": {
@@ -385,10 +542,10 @@
         }
       }
     },
-    "/api/Account/transactions": {
+    "/api/Transaction": {
       "post": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Регистрирует транзакцию по счёту",
         "description": "Создаёт новую транзакцию (дебетовую или кредитную) для указанного счёта.\r\nВалюта транзакции должна совпадать с валютой счёта.",
@@ -455,14 +612,34 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Account/transfers": {
+    "/api/Transaction/transfers": {
       "post": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Выполняет перевод между счетами",
         "description": "Создаёт две транзакции: дебетовую для счёта отправителя и кредитную для счёта получателя.\r\nВалюта перевода должна совпадать с валютами обоих счетов.",
@@ -529,14 +706,34 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Account/{accountId}/transactions": {
+    "/api/Transaction/{accountId}": {
       "get": {
         "tags": [
-          "Account"
+          "Transaction"
         ],
         "summary": "Получает выписку по счёту за период",
         "description": "Возвращает список транзакций для указанного счёта, отфильтрованный по датам (опционально).\r\nЕсли даты не указаны, возвращаются все транзакции.",
@@ -613,6 +810,26 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Для запроса требуется аутентификация",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -625,10 +842,12 @@
         "properties": {
           "accountId": {
             "type": "string",
+            "description": "идентификатор счета",
             "format": "uuid"
           },
           "ownerId": {
             "type": "string",
+            "description": "Уникальный идентификатор владельца счёта в формате GUID.",
             "format": "uuid"
           },
           "accountType": {
@@ -636,24 +855,58 @@
           },
           "currency": {
             "type": "string",
+            "description": "Валюта счёта. Поддерживаемые значения: RUB, USD, EUR.",
             "nullable": true
           },
           "balance": {
             "type": "number",
+            "description": "Текущий баланс счёта.",
             "format": "double"
           },
           "interestRate": {
             "type": "number",
+            "description": "Процентная ставка для счёта (обязательна для Deposit и Credit, 0 для Checking).",
             "format": "double",
             "nullable": true
           },
           "openingDate": {
             "type": "string",
+            "description": "Дата открытия счёта в формате ISO 8601.",
             "format": "date-time"
           },
           "closingDate": {
             "type": "string",
+            "description": "Дата закрытия счёта в формате ISO 8601, или null, если счёт активен.",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountDtoMbResult": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "Указывает, успешно ли выполнен запрос."
+          },
+          "value": {
+            "$ref": "#/components/schemas/AccountDto"
+          },
+          "mbError": {
+            "type": "string",
+            "description": "Сообщение об ошибке, если запрос неуспешен, или null, если запрос успешен.",
+            "nullable": true
+          },
+          "validationErrors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Список ошибок валидации, если запрос не прошёл валидацию, или null, если валидация успешна.",
             "nullable": true
           }
         },
@@ -672,6 +925,7 @@
         "properties": {
           "ownerId": {
             "type": "string",
+            "description": "Уникальный идентификатор владельца счета",
             "format": "uuid"
           },
           "accountType": {
@@ -679,33 +933,40 @@
           },
           "currency": {
             "type": "string",
+            "description": "Валюта счёта. Поддерживаемые значения: RUB, USD, EUR.",
             "nullable": true
           },
           "balance": {
             "type": "number",
+            "description": "Баланс счета",
             "format": "double"
           },
           "interestRate": {
             "type": "number",
+            "description": "Процентная ставка (обязательна для Deposit и Credit, игнорируется для Checking).",
             "format": "double",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "command для создания аккаунта"
       },
       "CreateTransactionCommand": {
         "type": "object",
         "properties": {
           "accountId": {
             "type": "string",
+            "description": "Идентификатор счёта, к которому относится транзакция, в формате GUID.",
             "format": "uuid"
           },
           "amount": {
             "type": "number",
+            "description": "Сумма транзакции. Должна быть положительной.",
             "format": "double"
           },
           "currency": {
             "type": "string",
+            "description": "Валюта USD RUB EUR.",
             "nullable": true
           },
           "type": {
@@ -713,11 +974,42 @@
           },
           "description": {
             "type": "string",
+            "description": "Описание транзакции, например, \"Пополнение счёта\".",
             "nullable": true
           },
           "dateTime": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectMbResult": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "Указывает, успешно ли выполнен запрос."
+          },
+          "value": {
+            "description": "Результат запроса, если запрос успешен, или null, если произошла ошибка.",
+            "nullable": true
+          },
+          "mbError": {
+            "type": "string",
+            "description": "Сообщение об ошибке, если запрос неуспешен, или null, если запрос успешен.",
+            "nullable": true
+          },
+          "validationErrors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Список ошибок валидации, если запрос не прошёл валидацию, или null, если валидация успешна.",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -750,22 +1042,27 @@
         "properties": {
           "fromAccountId": {
             "type": "string",
+            "description": "Счет с которого производится транзакция.",
             "format": "uuid"
           },
           "toAccountId": {
             "type": "string",
+            "description": "Счет на который производится транзакция.",
             "format": "uuid"
           },
           "amount": {
             "type": "number",
+            "description": "Сумма перевода.",
             "format": "double"
           },
           "currency": {
             "type": "string",
+            "description": "Валюта перевода RUB EUR USD.",
             "nullable": true
           },
           "description": {
             "type": "string",
+            "description": "Описание транзакции.",
             "nullable": true
           }
         },
@@ -827,6 +1124,29 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer' followed by a space and the JWT token. Example: 'Bearer eyJhbGci...'",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Transaction",
+      "description": "Контроллер для управления транзакциями"
+    },
+    {
+      "name": "Account",
+      "description": "Контроллер для управления банковскими счетами"
+    }
+  ]
 }

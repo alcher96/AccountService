@@ -1,4 +1,5 @@
-﻿namespace Account_Service.Accounts.PatchAccount.Command
+﻿#pragma warning disable CS1591 //Избыточный xml комментарий
+namespace Account_Service.Accounts.PatchAccount.Command
 {
     public class PatchAccountRequestDto
     {

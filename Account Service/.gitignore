@@ -1,0 +1,18 @@
+# .NET Core
+bin/
+obj/
+*.csproj.user
+*.pdb
+*.exe
+*.dll
+*.suo
+*.cache
+*.user
+*.userosscache
+*.sln.docstates
+
+
+
+# Environment-specific files
+.env
+*.env.*

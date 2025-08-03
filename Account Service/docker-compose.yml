@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.3.2
+    container_name: keycloak
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME=keycloak
+      - KC_LOG_LEVEL=info
+      - KC_HEALTH_ENABLED=true
+    ports:
+      - "8080:8080"
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak-data:/opt/keycloak/data/import
+    networks:
+      - account-service-network
+    mem_limit: 1024m
+
+  account-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: account-service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7299
+    ports:
+      - "7299:7299"
+    volumes:
+      - ./cert.pfx:/app/cert.pfx
+    depends_on:
+      - keycloak
+    networks:
+      - account-service-network
+
+networks:
+  account-service-network:
+    driver: bridge

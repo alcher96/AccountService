@@ -1,8 +1,9 @@
 ﻿using MediatR;
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Accounts.GetAccount.Query
 {
-    public class GetAccountsQuery : IRequest<List<AccountDto>>
+    public class GetAccountsQuery : IRequest<MbResult<List<AccountDto>>>
     {
         public Guid? OwnerId { get; set; }
         public AccountType? Type { get; set; }

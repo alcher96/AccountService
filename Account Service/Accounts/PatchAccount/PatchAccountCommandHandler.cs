@@ -3,24 +3,35 @@ using Account_Service.Repositories;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
+#pragma warning disable CS8613 // Nullability of reference types in return type doesn't match implicitly implemented member.
+#pragma warning disable CS1591 // Избыточный xml комментарий
 
 namespace Account_Service.Accounts.PatchAccount
 {
-    public class PatchAccountCommandHandler(IAccountRepository accountRepository, IMapper mapper)
-        : IRequestHandler<PatchAccountCommand, AccountDto>
+    // ReSharper disable once UnusedMember.Global
+    public class PatchAccountCommandHandler(
+        IAccountRepository accountRepository,
+        IMapper mapper,
+        IValidator<PatchAccountCommand> validator)
+        : IRequestHandler<PatchAccountCommand, MbResult<AccountDto>>
     {
-        public async Task<AccountDto> Handle(PatchAccountCommand request, CancellationToken cancellationToken)
+        public async Task<MbResult<AccountDto?>> Handle(PatchAccountCommand request, CancellationToken cancellationToken)
         {
+            // Валидация команды
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors
+                    .GroupBy(e => e.PropertyName)
+                    .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray());
+                return MbResult<AccountDto>.Failure(errors)!;
+            }
+
             var account = await accountRepository.GetByIdAsync(request.Id);
-            if (account == null)
-                throw new ValidationException("Счет не найден");
-
-            if (request.Request.Currency != null && account.Transactions.Count > 0)
-                throw new ValidationException("Нельзя изменить валюту счета с существующими транзакциями");
-
             mapper.Map(request.Request, account);
             await accountRepository.UpdateAsync(account);
-            return mapper.Map<AccountDto>(account);
+            var accountDto = mapper.Map<AccountDto>(account);
+            return MbResult<AccountDto>.Success(accountDto)!;
         }
     }
 }

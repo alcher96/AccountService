@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::A5667FC7-A521-4B5E-9A46-33FF9186DE8C::net9.0::AccountService.Tests.AccountControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::A5667FC7-A521-4B5E-9A46-33FF9186DE8C::net9.0::AccountService.Tests.AccountControllerIntegrationTests.CreateAccount_InvalidCurrency_ReturnsBadRequest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A5667FC7-A521-4B5E-9A46-33FF9186DE8C::net9.0::AccountService.Tests.TransactionControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
