@@ -21,7 +21,7 @@
 						},
 						{
 							"key": "client_secret",
-							"value": "your-client-secret",
+							"value": "your-actual-client-secret",
 							"type": "text"
 						},
 						{
