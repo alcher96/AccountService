@@ -7,17 +7,38 @@
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5206",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__DefaultConnection": "Host=localhost;Port=5432;Database=account_service;Username=postgres;Password=postgres",
+        "Keycloak__Authority": "http://localhost:8080/realms/account-service"
       }
     },
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-      "applicationUrl": "https://localhost:7299;http://localhost:5206",
+      "applicationUrl": "https://localhost:80;http://localhost:5206",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__DefaultConnection": "Host=localhost;Port=5432;Database=account_service;Username=postgres;Password=postgres",
+        "Keycloak__Authority": "http://localhost:8080/realms/account-service",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "cert.pfx",
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "password"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": false,
+      "publishAllPorts": true,
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://+:80",
+        "ConnectionStrings__DefaultConnection": "Host=postgres;Port=5432;Database=account_service;Username=postgres;Password=postgres",
+        "Keycloak__Authority": "http://keycloak:8080/realms/account-service",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "/app/cert.pfx",
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "password"
+      },
+      "dockerComposeFile": "../docker-compose.yml"
     }
   }
 }

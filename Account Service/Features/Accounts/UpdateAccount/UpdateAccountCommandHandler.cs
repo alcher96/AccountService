@@ -1,0 +1,37 @@
+﻿using AccountService.Repositories;
+using AutoMapper;
+using FluentValidation;
+using MediatR;
+using AccountService.Features.Accounts.UpdateAccount.Command;
+#pragma warning disable CS8613 // Nullability of reference types in return type doesn't match implicitly implemented member.
+#pragma warning disable CS1591 // Избыточный xml комментарий
+
+namespace AccountService.Features.Accounts.UpdateAccount
+{
+    // ReSharper disable once UnusedMember.Global
+    public class UpdateAccountCommandHandler(
+        IAccountRepository accountRepository,
+        IMapper mapper,
+        IValidator<UpdateAccountCommand> validator)
+        : IRequestHandler<UpdateAccountCommand, MbResult<AccountDto>>
+    {
+        public async Task<MbResult<AccountDto?>> Handle(UpdateAccountCommand request,
+            CancellationToken cancellationToken)
+        {
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors
+                    .GroupBy(e => e.PropertyName)
+                    .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray());
+                return MbResult<AccountDto>.Failure(errors)!;
+            }
+
+            var account = await accountRepository.GetByIdAsync(request.Id);
+            mapper.Map(request.Request, account);
+            await accountRepository.UpdateAsync(account!);
+            var accountDto = mapper.Map<AccountDto>(account);
+            return MbResult<AccountDto>.Success(accountDto)!;
+        }
+    }
+}

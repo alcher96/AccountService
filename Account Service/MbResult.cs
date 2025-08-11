@@ -1,7 +1,9 @@
 ﻿
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member избыф
 
-namespace Account_Service
+using System.Text.Json.Serialization;
+
+namespace AccountService
 {
     public class MbResult<T>
     {
@@ -24,8 +26,8 @@ namespace Account_Service
         /// </summary>
         public Dictionary<string, string[]>? ValidationErrors { get; set; }
 
-      
 
+        [JsonConstructor]
         private MbResult(bool isSuccess, T value, string mbError, Dictionary<string, string[]> validationErrors)
         {
             IsSuccess = isSuccess;
@@ -33,6 +35,8 @@ namespace Account_Service
             MbError = mbError;
             ValidationErrors = validationErrors;
         }
+
+
 
         public static MbResult<T> Success(T value) => new(true, value, null!, null!);
         public static MbResult<T> Failure(string error) => new(false, default!, error, null!);

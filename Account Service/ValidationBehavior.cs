@@ -2,7 +2,7 @@
 using MediatR;
 #pragma warning disable CS1591 //Избыточный xml комментарий
 
-namespace Account_Service
+namespace AccountService
 {
     public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
         : IPipelineBehavior<TRequest, TResponse>

@@ -881,7 +881,8 @@
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "ДТО для счета"
       },
       "AccountDtoMbResult": {
         "type": "object",
@@ -1128,7 +1129,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
-        "description": "Enter 'Bearer' followed by a space and the JWT token. Example: 'Bearer eyJhbGci...'",
+        "description": "Введите 'Bearer' пробел и токен. Например: 'Bearer eyJhbGci...'",
         "name": "Authorization",
         "in": "header"
       }
