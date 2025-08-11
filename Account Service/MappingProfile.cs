@@ -1,15 +1,15 @@
-﻿using Account_Service.Accounts;
-using Account_Service.Accounts.AddAccount.Command;
-using Account_Service.Transactions.PerformTransfer.Command;
-using Account_Service.Transactions;
-using AutoMapper;
-using Account_Service.Transactions.AddTransaction.Command;
-using Account_Service.Accounts.UpdateAccount.Command;
-using Account_Service.Accounts.PatchAccount.Command;
+﻿using AutoMapper;
+using AccountService.Features.Transactions;
+using AccountService.Features.Transactions.AddTransaction.Command;
+using AccountService.Features.Transactions.PerformTransfer.Command;
+using AccountService.Features.Accounts;
+using AccountService.Features.Accounts.AddAccount.Command;
+using AccountService.Features.Accounts.PatchAccount.Command;
+using AccountService.Features.Accounts.UpdateAccount.Command;
 // ReSharper disable UnusedParameter.Local
 #pragma warning disable CS1591 // Избыточный xml комментарий
 
-namespace Account_Service
+namespace AccountService
 {
     public class MappingProfile : Profile
     {
@@ -22,7 +22,8 @@ namespace Account_Service
             CreateMap<CreateAccountCommand, Account>()
                 .ForMember(dest => dest.AccountId, opt => opt.MapFrom(_ => Guid.NewGuid()))
                 .ForMember(dest => dest.OpeningDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.Transactions, opt => opt.Ignore());
+                .ForMember(dest => dest.Transactions, opt => opt.Ignore())
+                .ForMember(dest => dest.RowVersion, opt => opt.MapFrom(_ => Guid.NewGuid().ToByteArray())); // Добавляем RowVersion
 
 
             // UpdateAccountRequestDto -> Account
@@ -64,7 +65,9 @@ namespace Account_Service
                     ctx.Items.TryGetValue("TransactionType", out var type) && type is TransactionType.Credit
                         ? TransactionType.Credit
                         : TransactionType.Debit))
-                .ForMember(dest => dest.DateTime, opt => opt.MapFrom(_ => DateTime.UtcNow));
+                .ForMember(dest => dest.DateTime, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
         }
     }
 }

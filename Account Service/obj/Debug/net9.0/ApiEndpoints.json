@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "CreateAccount",
     "RelativePath": "api/Account",
     "HttpMethod": "POST",
@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Account_Service.Accounts.AddAccount.Command.CreateAccountCommand",
+        "Type": "AccountService.Transactions.AddAccount.Command.CreateAccountCommand",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Account_Service.MbResult\u00601[[Account_Service.Accounts.AccountDto, Account Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "AccountService.MbResult\u00601[[AccountService.Transactions.AccountDto, AccountService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -24,7 +24,7 @@
         "StatusCode": 201
       },
       {
-        "Type": "Account_Service.MbResult\u00601[[Account_Service.Accounts.AccountDto, Account Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "AccountService.MbResult\u00601[[AccountService.Transactions.AccountDto, AccountService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -33,7 +33,7 @@
         "StatusCode": 400
       },
       {
-        "Type": "Account_Service.MbResult\u00601[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "AccountService.MbResult\u00601[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "GetAccounts",
     "RelativePath": "api/Account",
     "HttpMethod": "GET",
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "GetAccountById",
     "RelativePath": "api/Account/{id}",
     "HttpMethod": "GET",
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "UpdateAccount",
     "RelativePath": "api/Account/{id}",
     "HttpMethod": "PUT",
@@ -129,13 +129,13 @@
       },
       {
         "Name": "request",
-        "Type": "Account_Service.Accounts.UpdateAccount.Command.UpdateAccountRequestDto",
+        "Type": "AccountService.Transactions.UpdateAccount.Command.UpdateAccountRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Account_Service.Accounts.AccountDto",
+        "Type": "AccountService.Transactions.AccountDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -173,7 +173,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "PatchAccount",
     "RelativePath": "api/Account/{id}",
     "HttpMethod": "PATCH",
@@ -187,13 +187,13 @@
       },
       {
         "Name": "request",
-        "Type": "Account_Service.Accounts.PatchAccount.Command.PatchAccountRequestDto",
+        "Type": "AccountService.Transactions.PatchAccount.Command.PatchAccountRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Account_Service.Accounts.AccountDto",
+        "Type": "AccountService.Transactions.AccountDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Accounts.AccountController",
+    "ContainingType": "AccountService.Accounts.AccountController",
     "Method": "DeleteAccount",
     "RelativePath": "api/Account/{id}",
     "HttpMethod": "DELETE",
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Transactions.TransactionController",
+    "ContainingType": "AccountService.Transactions.TransactionController",
     "Method": "CreateTransaction",
     "RelativePath": "api/Transaction",
     "HttpMethod": "POST",
@@ -289,7 +289,7 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Account_Service.Transactions.AddTransaction.Command.CreateTransactionCommand",
+        "Type": "AccountService.Transactions.AddTransaction.Command.CreateTransactionCommand",
         "IsRequired": true
       }
     ],
@@ -329,7 +329,7 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Transactions.TransactionController",
+    "ContainingType": "AccountService.Transactions.TransactionController",
     "Method": "GetAccountTransactions",
     "RelativePath": "api/Transaction/{accountId}",
     "HttpMethod": "GET",
@@ -388,7 +388,17 @@
     ]
   },
   {
-    "ContainingType": "Account_Service.Transactions.TransactionController",
+    "ContainingType": "AccountService.Transactions.TransactionController",
+    "Method": "AccrueInterest",
+    "RelativePath": "api/Transaction/accrue-interest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AccountService.Transactions.TransactionController",
     "Method": "PerformTransfer",
     "RelativePath": "api/Transaction/transfers",
     "HttpMethod": "POST",
@@ -397,7 +407,7 @@
     "Parameters": [
       {
         "Name": "command",
-        "Type": "Account_Service.Transactions.PerformTransfer.Command.PerformTransferCommand",
+        "Type": "AccountService.Transactions.PerformTransfer.Command.PerformTransferCommand",
         "IsRequired": true
       }
     ],

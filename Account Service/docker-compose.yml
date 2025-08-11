@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:26.3.2
+    image: quay.io/keycloak/keycloak:26.0.2
     container_name: keycloak
     environment:
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
@@ -19,6 +19,29 @@ services:
     networks:
       - account-service-network
     mem_limit: 1024m
+    restart: unless-stopped
+    
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=account_service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - account-service-network
+    mem_limit: 512m
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   account-service:
     build:
@@ -27,15 +50,22 @@ services:
     container_name: account-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:7299
+      - ASPNETCORE_URLS=https://+:80
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=account_service;Username=postgres;Password=postgres
+      - Keycloak__Authority=http://keycloak:8080/realms/account-service
     ports:
-      - "7299:7299"
+      - "80:80"
     volumes:
       - ./cert.pfx:/app/cert.pfx
     depends_on:
-      - keycloak
+      postgres:
+        condition: service_healthy
     networks:
       - account-service-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
 
 networks:
   account-service-network:

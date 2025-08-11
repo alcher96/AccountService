@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0
+WORKDIR /src
+COPY ["AccountService.csproj", "."]
+RUN dotnet restore "AccountService.csproj"
+COPY . .
+RUN dotnet build "Account Service.csproj" -c Release -o /app
+RUN dotnet tool install --global dotnet-ef --version 9.0
+ENV PATH="$PATH:/root/.dotnet/tools"
+RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/apt/lists/*
+WORKDIR /src
+ENTRYPOINT ["dotnet", "ef", "database", "update", "--project", "AccountService.csproj"]

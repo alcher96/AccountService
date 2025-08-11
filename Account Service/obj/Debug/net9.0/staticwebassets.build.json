@@ -1,1 +1,12 @@
-{"Version":1,"Hash":"/+7s67TUY8PWNoZFzAYkeUZ34EM1zk/v2yxtrH9LiXE=","Source":"Account Service","BasePath":"_content/Account Service","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "iv2oJ8dakDWYDQHnRGq58x1AOFXHW7Lqr/XSxr9L114=",
+  "Source": "AccountService",
+  "BasePath": "_content/AccountService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

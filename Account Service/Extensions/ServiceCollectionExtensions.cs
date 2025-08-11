@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member избыточный xml комментарий
 
-namespace Account_Service.Extensions
+namespace AccountService.Extensions
 {
     public static class ServiceCollectionExtensions
     {

@@ -4,17 +4,17 @@
         <name>Account Service</name>
     </assembly>
     <members>
-        <member name="T:Account_Service.Accounts.AccountController">
+        <member name="T:Account_Service.Transactions.AccountController">
             <summary>
             Контроллер для управления банковскими счетами
             </summary>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.#ctor(MediatR.IMediator)">
+        <member name="M:Account_Service.Transactions.AccountController.#ctor(MediatR.IMediator)">
             <summary>
             Контроллер для управления банковскими счетами
             </summary>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.CreateAccount(Account_Service.Accounts.AddAccount.Command.CreateAccountCommand)">
+        <member name="M:Account_Service.Transactions.AccountController.CreateAccount(Account_Service.Transactions.AddAccount.Command.CreateAccountCommand)">
             <summary>
             Создаёт новый банковский счёт
             </summary>
@@ -29,7 +29,7 @@
             <response code="400">Недопустимые данные (например, неподдерживаемая валюта)</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.GetAccounts(System.Nullable{System.Guid},System.Nullable{Account_Service.Accounts.AccountType})">
+        <member name="M:Account_Service.Transactions.AccountController.GetAccounts(System.Nullable{System.Guid},System.Nullable{Account_Service.Transactions.AccountType})">
             <summary>
             Получает список счетов с фильтрам по владельцу и типу
             </summary>
@@ -43,7 +43,7 @@
             <response code="200">Список счетов успешно возвращён</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.GetAccountById(System.Guid)">
+        <member name="M:Account_Service.Transactions.AccountController.GetAccountById(System.Guid)">
             <summary>
             Получает данные счёта по идентификатору
             </summary>
@@ -57,7 +57,7 @@
             <response code="404">Счёт не найден</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.UpdateAccount(System.Guid,Account_Service.Accounts.UpdateAccount.Command.UpdateAccountRequestDto)">
+        <member name="M:Account_Service.Transactions.AccountController.UpdateAccount(System.Guid,Account_Service.Transactions.UpdateAccount.Command.UpdateAccountRequestDto)">
             <summary>
             Обновляет данные счёта
             </summary>
@@ -73,7 +73,7 @@
             <response code="404">Счёт не найден</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.PatchAccount(System.Guid,Account_Service.Accounts.PatchAccount.Command.PatchAccountRequestDto)">
+        <member name="M:Account_Service.Transactions.AccountController.PatchAccount(System.Guid,Account_Service.Transactions.PatchAccount.Command.PatchAccountRequestDto)">
             <summary>
             Частично обновляет данные счёта
             </summary>
@@ -90,7 +90,7 @@
             <response code="404">Счёт не найден</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="M:Account_Service.Accounts.AccountController.DeleteAccount(System.Guid)">
+        <member name="M:Account_Service.Transactions.AccountController.DeleteAccount(System.Guid)">
             <summary>
             Удаляет счёт
             </summary>
@@ -104,99 +104,79 @@
             <response code="404">Счёт не найден</response>
             <response code="401">Для запроса требуется аутентификация</response>
         </member>
-        <member name="T:Account_Service.Accounts.AccountDto">
+        <member name="T:Account_Service.Transactions.AccountDto">
             <summary>
             ДТО для счета 
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.AccountId">
+        <member name="P:Account_Service.Transactions.AccountDto.AccountId">
             <summary>
             идентификатор счета
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.OwnerId">
+        <member name="P:Account_Service.Transactions.AccountDto.OwnerId">
             <summary>
             Уникальный идентификатор владельца счёта в формате GUID.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.AccountType">
+        <member name="P:Account_Service.Transactions.AccountDto.AccountType">
             <summary>
             Тип счёта. Поддерживаемые значения: Checking, Deposit, Credit.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.Currency">
+        <member name="P:Account_Service.Transactions.AccountDto.Currency">
             <summary>
             Валюта счёта. Поддерживаемые значения: RUB, USD, EUR.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.Balance">
+        <member name="P:Account_Service.Transactions.AccountDto.Balance">
             <summary>
             Текущий баланс счёта.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.InterestRate">
+        <member name="P:Account_Service.Transactions.AccountDto.InterestRate">
             <summary>
             Процентная ставка для счёта (обязательна для Deposit и Credit, 0 для Checking).
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.OpeningDate">
+        <member name="P:Account_Service.Transactions.AccountDto.OpeningDate">
             <summary>
             Дата открытия счёта в формате ISO 8601.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AccountDto.ClosingDate">
+        <member name="P:Account_Service.Transactions.AccountDto.ClosingDate">
             <summary>
              Дата закрытия счёта в формате ISO 8601, или null, если счёт активен.
             </summary>
         </member>
-        <member name="T:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand">
+        <member name="T:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand">
             <summary>
             command для создания аккаунта
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand.OwnerId">
+        <member name="P:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand.OwnerId">
             <summary>
             Уникальный идентификатор владельца счета
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand.AccountType">
+        <member name="P:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand.AccountType">
             <summary>
             Тип счёта. Поддерживаемые значения: Checking, Deposit, Credit.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand.Currency">
+        <member name="P:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand.Currency">
             <summary>
             Валюта счёта. Поддерживаемые значения: RUB, USD, EUR.
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand.Balance">
+        <member name="P:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand.Balance">
             <summary>
             Баланс счета
             </summary>
         </member>
-        <member name="P:Account_Service.Accounts.AddAccount.Command.CreateAccountCommand.InterestRate">
+        <member name="P:Account_Service.Transactions.AddAccount.Command.CreateAccountCommand.InterestRate">
             <summary>
             Процентная ставка (обязательна для Deposit и Credit, игнорируется для Checking).
-            </summary>
-        </member>
-        <member name="P:Account_Service.MbResult`1.IsSuccess">
-            <summary>
-            Указывает, успешно ли выполнен запрос.
-            </summary>
-        </member>
-        <member name="P:Account_Service.MbResult`1.Value">
-            <summary>
-            Результат запроса, если запрос успешен, или null, если произошла ошибка.
-            </summary>
-        </member>
-        <member name="P:Account_Service.MbResult`1.MbError">
-            <summary>
-            Сообщение об ошибке, если запрос неуспешен, или null, если запрос успешен.
-            </summary>
-        </member>
-        <member name="P:Account_Service.MbResult`1.ValidationErrors">
-            <summary>
-            Список ошибок валидации, если запрос не прошёл валидацию, или null, если валидация успешна.
             </summary>
         </member>
         <member name="P:Account_Service.Transactions.AddTransaction.Command.CreateTransactionCommand.AccountId">
@@ -344,6 +324,50 @@
         <member name="P:Account_Service.Transactions.TransactionDto.DateTime">
             <summary>
             Дата и время транзакции в формате ISO 8601.
+            </summary>
+        </member>
+        <member name="T:Account_Service.Data.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Account_Service.Data.Migrations.AddAccrueInterestProcedure">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.AddAccrueInterestProcedure.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.AddAccrueInterestProcedure.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Account_Service.Data.Migrations.AddAccrueInterestProcedure.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="P:Account_Service.MbResult`1.IsSuccess">
+            <summary>
+            Указывает, успешно ли выполнен запрос.
+            </summary>
+        </member>
+        <member name="P:Account_Service.MbResult`1.Value">
+            <summary>
+            Результат запроса, если запрос успешен, или null, если произошла ошибка.
+            </summary>
+        </member>
+        <member name="P:Account_Service.MbResult`1.MbError">
+            <summary>
+            Сообщение об ошибке, если запрос неуспешен, или null, если запрос успешен.
+            </summary>
+        </member>
+        <member name="P:Account_Service.MbResult`1.ValidationErrors">
+            <summary>
+            Список ошибок валидации, если запрос не прошёл валидацию, или null, если валидация успешна.
             </summary>
         </member>
     </members>
