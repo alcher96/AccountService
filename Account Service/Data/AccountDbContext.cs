@@ -2,6 +2,8 @@
 using AccountService.Features.Transactions;
 using Microsoft.EntityFrameworkCore;
 // ReSharper disable ConvertToPrimaryConstructor
+// ReSharper disable StringLiteralTypo
+// ReSharper disable CommentTypo
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace AccountService.Data
@@ -18,8 +20,11 @@ namespace AccountService.Data
             //Создание индексов
             modelBuilder.Entity<Account>(entity =>
             {
-                entity.Property(a => a.RowVersion)
-                    .IsConcurrencyToken();
+                entity.Property(e => e.RowVersion)
+                    .HasColumnName("xmin") // указываем, что это xmin
+                    .HasColumnType("xid")  // тип xid в PostgreSQL
+                    .ValueGeneratedOnAddOrUpdate()
+                    .IsConcurrencyToken();  // делаем токеном для оптимистической блокировки
                 entity.HasIndex(e => e.OwnerId, "IX_Accounts_OwnerId").HasMethod("hash");
             });
 

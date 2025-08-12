@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AccountService.Features.Transactions;
 // ReSharper disable EntityFramework.ModelValidation.UnlimitedStringLength
+// ReSharper disable CommentTypo
 
 namespace AccountService.Features.Accounts
 {
@@ -48,10 +49,11 @@ namespace AccountService.Features.Accounts
         /// навигационное поле
         /// </summary>
         public List<Transaction> Transactions { get; set; } = [];
-        
+
         /// <summary>
         /// для обеспечения конкурентности
         /// </summary>
-        public byte[] RowVersion { get; set; } = null!;
+        // будет мапиться на xmin
+        public uint RowVersion { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gtjBa/EqBPs=",
+  "dgSpecHash": "UGoeTCNBD2s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService.Tests\\AccountService.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\AccountService.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

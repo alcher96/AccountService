@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using AccountService.Features.Transactions.AddTransaction.Command;
 using AccountService.Features.Transactions.PerformTransfer.Command;
 using AccountService.Features.Accounts;
@@ -71,25 +70,17 @@ namespace AccountService.Features.Transactions
         [Authorize(Roles = "user")]
         public async Task<IActionResult> PerformTransfer([FromBody] PerformTransferCommand command)
         {
-            try
+            var result = await mediator.Send(command);
+            if (!result.IsSuccess)
             {
-                var result = await mediator.Send(command);
-                if (!result.IsSuccess)
+                if (result.MbError == "Concurrency conflict")
                 {
-                    if (result.MbError == "Concurrency conflict")
-                    {
-                        return Conflict(result);
-                    }
-                    return BadRequest(result);
+                    return Conflict(result);
                 }
-
-                return CreatedAtAction(nameof(AccountController.GetAccountById),
-                    new { controller = "Account", id = command.FromAccountId }, result);
+                return BadRequest(result);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                return Conflict("The account was modified by another process. Please retry.");
-            }
+            return CreatedAtAction(nameof(AccountController.GetAccountById),
+                new { controller = "Account", id = command.FromAccountId }, result);
         }
 
         /// <summary>

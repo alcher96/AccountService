@@ -22,7 +22,7 @@ namespace AccountService.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Account_Service.Accounts.Account", b =>
+            modelBuilder.Entity("AccountService.Features.Accounts.Account", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .ValueGeneratedOnAdd()
@@ -50,11 +50,11 @@ namespace AccountService.Data.Migrations
                     b.Property<Guid>("OwnerId")
                         .HasColumnType("uuid");
 
-                    b.Property<byte[]>("RowVersion")
+                    b.Property<uint>("RowVersion")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
+                        .HasColumnType("xid")
+                        .HasColumnName("xmin");
 
                     b.HasKey("AccountId");
 
@@ -65,7 +65,7 @@ namespace AccountService.Data.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Account_Service.Transactions.Transaction", b =>
+            modelBuilder.Entity("AccountService.Features.Transactions.Transaction", b =>
                 {
                     b.Property<Guid>("TransactionId")
                         .ValueGeneratedOnAdd()
@@ -103,16 +103,16 @@ namespace AccountService.Data.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("Account_Service.Transactions.Transaction", b =>
+            modelBuilder.Entity("AccountService.Features.Transactions.Transaction", b =>
                 {
-                    b.HasOne("Account_Service.Accounts.Account", null)
+                    b.HasOne("AccountService.Features.Accounts.Account", null)
                         .WithMany("Transactions")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Account_Service.Accounts.Account", b =>
+            modelBuilder.Entity("AccountService.Features.Accounts.Account", b =>
                 {
                     b.Navigation("Transactions");
                 });
