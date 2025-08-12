@@ -22,8 +22,8 @@ namespace AccountService
             CreateMap<CreateAccountCommand, Account>()
                 .ForMember(dest => dest.AccountId, opt => opt.MapFrom(_ => Guid.NewGuid()))
                 .ForMember(dest => dest.OpeningDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.Transactions, opt => opt.Ignore())
-                .ForMember(dest => dest.RowVersion, opt => opt.MapFrom(_ => Guid.NewGuid().ToByteArray())); // Добавляем RowVersion
+                .ForMember(dest => dest.Transactions, opt => opt.Ignore());
+
 
 
             // UpdateAccountRequestDto -> Account

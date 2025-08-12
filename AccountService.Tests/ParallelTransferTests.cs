@@ -97,7 +97,6 @@ namespace AccountService.Tests
                 Currency = "USD",
                 InterestRate = 0.05m,
                 OpeningDate = DateTime.UtcNow,
-                RowVersion = Guid.NewGuid().ToByteArray()
             };
             var account2 = new Account
             {
@@ -108,7 +107,6 @@ namespace AccountService.Tests
                 Currency = "USD",
                 InterestRate = 0.05m,
                 OpeningDate = DateTime.UtcNow,
-                RowVersion = Guid.NewGuid().ToByteArray()
             };
             dbContext.Accounts.AddRange(account1, account2);
             try
@@ -143,24 +141,21 @@ namespace AccountService.Tests
             Console.WriteLine($"[TEST] GET /api/Account Status: {response.StatusCode}");
             var responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"[TEST] GET /api/Account Body: {responseBody}");
-
             var result = await _client.GetFromJsonAsync<MbResult<List<AccountDto>>>("api/Account", _jsonOptions);
             result.Should().NotBeNull();
             result.IsSuccess.Should().BeTrue();
             result.Value.Should().NotBeNull();
-
             var initialAccounts = result.Value;
             Console.WriteLine("[TEST] Начальное состояние счетов:");
             foreach (var acc in initialAccounts)
             {
                 Console.WriteLine($" {acc.AccountId} | Balance: {acc.Balance} {acc.Currency}");
             }
-
             int transferCount = 50;
             var tasks = new List<Task>();
             int successfulTransfers = 0;
+            int conflictTransfers = 0;
             Console.WriteLine($"[TEST] Запуск {transferCount} параллельных переводов...");
-
             for (int i = 0; i < transferCount; i++)
             {
                 var request = new
@@ -172,23 +167,33 @@ namespace AccountService.Tests
                     Description = $"Transfer #{i + 1}"
                 };
                 Console.WriteLine(
-                    $"[TEST] Sending transfer request: FromAccountId={request.FromAccountId}, ToAccountId={request.ToAccountId}");
+                    $"[TEST] Sending transfer request: FromAccountId={request.FromAccountId}, ToAccountId={request.ToAccountId}, Amount={request.Amount}");
                 tasks.Add(Task.Run(async () =>
                 {
                     try
                     {
-                        var postAsJsonAsync =
-                            await _client.PostAsJsonAsync("api/Transaction/transfers", request, _jsonOptions);
+                        await Task.Delay(i * 10); // небольшая задержка для стабильноости
+                        var postAsJsonAsync = await _client.PostAsJsonAsync("api/Transaction/transfers", request, _jsonOptions);
                         var body = await postAsJsonAsync.Content.ReadAsStringAsync();
                         Console.WriteLine($"[TRANSFER #{i + 1}] Status={postAsJsonAsync.StatusCode}");
                         if (!string.IsNullOrWhiteSpace(body))
                             Console.WriteLine($"[TRANSFER #{i + 1}] Body: {body}");
                         if (postAsJsonAsync.IsSuccessStatusCode)
-                            Interlocked.Increment(ref successfulTransfers);
-                        else if (postAsJsonAsync.StatusCode == HttpStatusCode.BadRequest ||
-                                 postAsJsonAsync.StatusCode == HttpStatusCode.Conflict)
                         {
-                            try
+                            Interlocked.Increment(ref successfulTransfers);
+                        }
+                        else switch (postAsJsonAsync.StatusCode)
+                        {
+                            case HttpStatusCode.Conflict:
+                            {
+                                Interlocked.Increment(ref conflictTransfers);
+                                var errorResponse = JsonSerializer.Deserialize<MbResult<object>>(body, _jsonOptions);
+                                errorResponse.Should().NotBeNull();
+                                errorResponse.MbError.Should().Be("Concurrency conflict", $"Transfer #{i + 1} should return 'Concurrency conflict' for HTTP 409");
+                                Console.WriteLine($"[TRANSFER #{i + 1}] Conflict: {errorResponse.MbError}");
+                                break;
+                            }
+                            case HttpStatusCode.BadRequest:
                             {
                                 var errorResponse = JsonSerializer.Deserialize<MbResult<object>>(body, _jsonOptions);
                                 Console.WriteLine($"[TRANSFER #{i + 1}] Error: {errorResponse?.MbError}");
@@ -200,11 +205,8 @@ namespace AccountService.Tests
                                             $"[TRANSFER #{i + 1}] Validation Error: {error.Key} - {string.Join(", ", error.Value)}");
                                     }
                                 }
-                            }
-                            catch (JsonException ex)
-                            {
-                                Console.WriteLine($"[TRANSFER #{i + 1}] Deserialization Error: {ex.Message}");
-                                Console.WriteLine($"[TRANSFER #{i + 1}] Response Body: {body}");
+
+                                break;
                             }
                         }
                     }
@@ -214,35 +216,30 @@ namespace AccountService.Tests
                     }
                 }));
             }
-
             // Act
             await Task.WhenAll(tasks);
-
             // Assert
             Console.WriteLine($"[TEST] Успешных переводов: {successfulTransfers} из {transferCount}");
+            Console.WriteLine($"[TEST] Конфликтных переводов: {conflictTransfers}");
             var resultAccountsResponse = await _client.GetAsync("api/Account");
             Console.WriteLine($"[TEST] GET /api/Account (final) Status: {resultAccountsResponse.StatusCode}");
             var resultAccountsBody = await resultAccountsResponse.Content.ReadAsStringAsync();
             Console.WriteLine($"[TEST] GET /api/Account (final) Body: {resultAccountsBody}");
-
-            var resultAccounts =
-                await _client.GetFromJsonAsync<MbResult<List<AccountDto>>>("api/Account", _jsonOptions);
+            var resultAccounts = await _client.GetFromJsonAsync<MbResult<List<AccountDto>>>("api/Account", _jsonOptions);
             resultAccounts.Should().NotBeNull();
             resultAccounts.IsSuccess.Should().BeTrue();
             resultAccounts.Value.Should().NotBeNull();
-
             var finalAccounts = resultAccounts.Value;
             Console.WriteLine("[TEST] Итоговое состояние счетов:");
             foreach (var acc in finalAccounts)
             {
                 Console.WriteLine($" {acc.AccountId} | Balance: {acc.Balance} {acc.Currency}");
             }
-
             var totalInitial = initialAccounts.Sum(a => a.Balance);
             var totalFinal = finalAccounts.Sum(a => a.Balance);
-            
             totalFinal.Should().Be(totalInitial, "Суммарный баланс должен остаться неизменным");
             successfulTransfers.Should().BeGreaterThan(0, "Ожидалось хотя бы одно успешное выполнение перевода");
+            conflictTransfers.Should().BeGreaterThan(0, "Ожидался хотя бы один конфликтный перевод");
         }
     }
 }
