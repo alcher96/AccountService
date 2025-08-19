@@ -45,6 +45,12 @@ namespace AccountService.Features.Accounts
         /// </summary>
         public DateTime? ClosingDate { get; set; }
 
+
+        /// <summary>
+        /// блокировка счета
+        /// </summary>
+        public bool IsFrozen { get; set; } = false;
+
         /// <summary>
         /// навигационное поле
         /// </summary>

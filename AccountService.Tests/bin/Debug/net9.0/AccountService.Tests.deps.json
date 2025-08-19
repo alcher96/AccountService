@@ -45,6 +45,7 @@
           "Microsoft.NET.Test.Sdk": "17.12.0",
           "Moq": "4.20.72",
           "Testcontainers.PostgreSql": "4.6.0",
+          "Testcontainers.RabbitMq": "4.6.0",
           "coverlet.collector": "6.0.2",
           "xunit": "2.9.2",
           "xunit.runner.visualstudio": "2.8.2",
@@ -139,8 +140,8 @@
           "Microsoft.Extensions.Configuration.Ini": "9.0.0.0",
           "Microsoft.Extensions.Configuration.KeyPerFile": "9.0.0.0",
           "Microsoft.Extensions.Configuration.Xml": "9.0.0.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "9.0.0.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.Reference": "9.0.0.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Reference": "9.0.0.0",
           "Microsoft.Extensions.Features": "9.0.0.0",
           "Microsoft.Extensions.FileProviders.Composite": "9.0.0.0",
           "Microsoft.Extensions.FileProviders.Embedded": "9.0.0.0",
@@ -211,7 +212,7 @@
           "System.IO.FileSystem.Watcher": "9.0.0.0",
           "System.IO.IsolatedStorage": "9.0.0.0",
           "System.IO.MemoryMappedFiles": "9.0.0.0",
-          "System.IO.Pipelines": "9.0.0.0",
+          "System.IO.Pipelines.Reference": "9.0.0.0",
           "System.IO.Pipes.AccessControl": "9.0.0.0",
           "System.IO.Pipes": "9.0.0.0",
           "System.IO.UnmanagedMemoryStream": "9.0.0.0",
@@ -296,7 +297,7 @@
           "System.Threading.Channels": "9.0.0.0",
           "System.Threading": "9.0.0.0",
           "System.Threading.Overlapped": "9.0.0.0",
-          "System.Threading.RateLimiting": "9.0.0.0",
+          "System.Threading.RateLimiting.Reference": "9.0.0.0",
           "System.Threading.Tasks.Dataflow": "9.0.0.0",
           "System.Threading.Tasks": "9.0.0.0",
           "System.Threading.Tasks.Extensions": "9.0.0.0",
@@ -584,6 +585,51 @@
         },
         "compile": {
           "lib/netstandard2.0/Hangfire.SqlServer.dll": {}
+        }
+      },
+      "MassTransit/8.5.2": {
+        "dependencies": {
+          "MassTransit.Abstractions": "8.5.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.dll": {
+            "assemblyVersion": "8.5.2.0",
+            "fileVersion": "8.5.2.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/MassTransit.dll": {}
+        }
+      },
+      "MassTransit.Abstractions/8.5.2": {
+        "runtime": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {
+            "assemblyVersion": "8.5.2.0",
+            "fileVersion": "8.5.2.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/MassTransit.Abstractions.dll": {}
+        }
+      },
+      "MassTransit.RabbitMQ/8.5.2": {
+        "dependencies": {
+          "MassTransit": "8.5.2",
+          "RabbitMQ.Client": "7.1.2"
+        },
+        "runtime": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "8.5.2.0",
+            "fileVersion": "8.5.2.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/MassTransit.RabbitMqTransport.dll": {}
         }
       },
       "MediatR/13.0.0": {
@@ -1039,6 +1085,15 @@
           "lib/net9.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8"
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0": {},
       "Microsoft.Extensions.FileProviders.Abstractions/9.0.8": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.8"
@@ -1692,6 +1747,41 @@
           "lib/net6.0/Moq.dll": {}
         }
       },
+      "NetLah.Extensions.Logging.Serilog/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyModel": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.8",
+          "Serilog": "4.3.0",
+          "Serilog.Extensions.Logging": "9.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Console": "6.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/NetLah.Extensions.Logging.Serilog.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/NetLah.Extensions.Logging.Serilog.dll": {}
+        }
+      },
+      "NetLah.Extensions.Logging.Serilog.AspNetCore/1.0.0": {
+        "dependencies": {
+          "NetLah.Extensions.Logging.Serilog": "1.0.0",
+          "Serilog.AspNetCore": "9.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/NetLah.Extensions.Logging.Serilog.AspNetCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/NetLah.Extensions.Logging.Serilog.AspNetCore.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -1733,6 +1823,21 @@
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         }
       },
+      "RabbitMQ.Client/7.1.2": {
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0",
+          "System.Threading.RateLimiting": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.1.2.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/RabbitMQ.Client.dll": {}
+        }
+      },
       "Scrutor/3.3.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
@@ -1746,6 +1851,142 @@
         },
         "compile": {
           "lib/netcoreapp3.1/Scrutor.dll": {}
+        }
+      },
+      "Serilog/4.3.0": {
+        "runtime": {
+          "lib/net9.0/Serilog.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Serilog.dll": {}
+        }
+      },
+      "Serilog.AspNetCore/9.0.0": {
+        "dependencies": {
+          "Serilog": "4.3.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Console": "6.0.0",
+          "Serilog.Sinks.Debug": "3.0.0",
+          "Serilog.Sinks.File": "6.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/Serilog.AspNetCore.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Serilog.AspNetCore.dll": {}
+        }
+      },
+      "Serilog.Extensions.Hosting/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Serilog": "4.3.0",
+          "Serilog.Extensions.Logging": "9.0.0"
+        },
+        "runtime": {
+          "lib/net9.0/Serilog.Extensions.Hosting.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Serilog.Extensions.Hosting.dll": {}
+        }
+      },
+      "Serilog.Extensions.Logging/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "9.0.8",
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net9.0/Serilog.Extensions.Logging.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Serilog.Extensions.Logging.dll": {}
+        }
+      },
+      "Serilog.Formatting.Compact/3.0.0": {
+        "dependencies": {
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Formatting.Compact.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Formatting.Compact.dll": {}
+        }
+      },
+      "Serilog.Settings.Configuration/9.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": "9.0.8",
+          "Microsoft.Extensions.DependencyModel": "9.0.8",
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net9.0/Serilog.Settings.Configuration.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Serilog.Settings.Configuration.dll": {}
+        }
+      },
+      "Serilog.Sinks.Console/6.0.0": {
+        "dependencies": {
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {}
+        }
+      },
+      "Serilog.Sinks.Debug/3.0.0": {
+        "dependencies": {
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Debug.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.Debug.dll": {}
+        }
+      },
+      "Serilog.Sinks.File/6.0.0": {
+        "dependencies": {
+          "Serilog": "4.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.File.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.File.dll": {}
         }
       },
       "SharpZipLib/1.4.2": {
@@ -1896,6 +2137,7 @@
           "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll": {}
         }
       },
+      "System.IO.Pipelines/8.0.0": {},
       "System.Reflection.Metadata/1.6.0": {},
       "System.Security.AccessControl/4.5.0": {
         "dependencies": {
@@ -1915,6 +2157,7 @@
       },
       "System.Security.Principal.Windows/5.0.0": {},
       "System.Text.Encodings.Web/8.0.0": {},
+      "System.Threading.RateLimiting/8.0.0": {},
       "Testcontainers/4.6.0": {
         "dependencies": {
           "Docker.DotNet.Enhanced": "3.128.3",
@@ -1945,6 +2188,20 @@
         },
         "compile": {
           "lib/net9.0/Testcontainers.PostgreSql.dll": {}
+        }
+      },
+      "Testcontainers.RabbitMq/4.6.0": {
+        "dependencies": {
+          "Testcontainers": "4.6.0"
+        },
+        "runtime": {
+          "lib/net9.0/Testcontainers.RabbitMq.dll": {
+            "assemblyVersion": "4.6.0.0",
+            "fileVersion": "4.6.0.0"
+          }
+        },
+        "compile": {
+          "lib/net9.0/Testcontainers.RabbitMq.dll": {}
         }
       },
       "xunit/2.9.2": {
@@ -2020,11 +2277,18 @@
           "FluentValidation.DependencyInjectionExtensions": "12.0.0",
           "Hangfire": "1.8.20",
           "Hangfire.PostgreSql": "1.20.12",
+          "MassTransit": "8.5.2",
+          "MassTransit.RabbitMQ": "8.5.2",
           "MediatR": "13.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.8",
           "Microsoft.AspNetCore.OpenApi": "9.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.8",
+          "Microsoft.Extensions.Hosting": "9.0.8",
+          "NetLah.Extensions.Logging.Serilog.AspNetCore": "1.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "RabbitMQ.Client": "7.1.2",
+          "Serilog": "4.3.0",
+          "Serilog.Sinks.Console": "6.0.0",
           "Swashbuckle.AspNetCore": "9.0.3",
           "Swashbuckle.AspNetCore.Annotations": "9.0.3",
           "Swashbuckle.AspNetCore.Filters": "9.0.0"
@@ -2585,13 +2849,13 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0.0": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.Reference/9.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {}
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0.0": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Reference/9.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Diagnostics.HealthChecks.dll": {}
         },
@@ -3017,7 +3281,7 @@
         },
         "compileOnly": true
       },
-      "System.IO.Pipelines/9.0.0.0": {
+      "System.IO.Pipelines.Reference/9.0.0.0": {
         "compile": {
           "System.IO.Pipelines.dll": {}
         },
@@ -3527,7 +3791,7 @@
         },
         "compileOnly": true
       },
-      "System.Threading.RateLimiting/9.0.0.0": {
+      "System.Threading.RateLimiting.Reference/9.0.0.0": {
         "compile": {
           "System.Threading.RateLimiting.dll": {}
         },
@@ -3797,6 +4061,27 @@
       "sha512": "sha512-O+0A2dEf+cbKnJQRxK5jF5c4aLDCOf2+KllYBwjdO82KRVKz0nox8wirWQP/AKW85f4NJ93ZKAEtAWOFk6DLxw==",
       "path": "hangfire.sqlserver/1.8.20",
       "hashPath": "hangfire.sqlserver.1.8.20.nupkg.sha512"
+    },
+    "MassTransit/8.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LsaJjHcyUHAm/s7aO5XkUkp8mYcwyVHug2jrLBaUrqau+lXynz8+e7wWIEfJJ5d/+wGKOdiX+oI9C1QYNoeZaQ==",
+      "path": "masstransit/8.5.2",
+      "hashPath": "masstransit.8.5.2.nupkg.sha512"
+    },
+    "MassTransit.Abstractions/8.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5rgaFoJXGpfOeUDegkS2h08NvGwW6Qdkj5gou9kBfMb39tlWWyM/S3c/HWrpaXUrlE+MQlK3o6xHM85hJtP2aA==",
+      "path": "masstransit.abstractions/8.5.2",
+      "hashPath": "masstransit.abstractions.8.5.2.nupkg.sha512"
+    },
+    "MassTransit.RabbitMQ/8.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VMjFTzGRpfWkVTjZyDw6wTpjNi0UxlRhDVdYcp70TN3CvZ6iP3aK3pC6wEU0d0E1znTXOoYbS4abwJCcp38LbQ==",
+      "path": "masstransit.rabbitmq/8.5.2",
+      "hashPath": "masstransit.rabbitmq.8.5.2.nupkg.sha512"
     },
     "MediatR/13.0.0": {
       "type": "package",
@@ -4085,6 +4370,20 @@
       "path": "microsoft.extensions.diagnostics.abstractions/9.0.8",
       "hashPath": "microsoft.extensions.diagnostics.abstractions.9.0.8.nupkg.sha512"
     },
+    "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cxsK9/Dx7Ka9sfiA1nY8XlSzIaWff5FNRw0+ls8yR+aGzmnah5JGKsTHgQrehjMwGAVud/pjiUZ9MWizfUSkTQ==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/9.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.9.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H1IbHm/MnUgEV0N07WrkPBIIoX7isP6IPaqUdZ3CwbMcUVDGIu+okamW28kyDRfIiZqbTbyHuNIkr4ZSHPyvDw==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.9.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.FileProviders.Abstractions/9.0.8": {
       "type": "package",
       "serviceable": true,
@@ -4302,6 +4601,20 @@
       "path": "moq/4.20.72",
       "hashPath": "moq.4.20.72.nupkg.sha512"
     },
+    "NetLah.Extensions.Logging.Serilog/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7T0xNexI+CF5+EqFokcRXscxyFHPFYmP7m2vdzrh792F43Oyr1+kQ6vWdyIRvi+V5xHyxD5xF76IwS9yZGP3hA==",
+      "path": "netlah.extensions.logging.serilog/1.0.0",
+      "hashPath": "netlah.extensions.logging.serilog.1.0.0.nupkg.sha512"
+    },
+    "NetLah.Extensions.Logging.Serilog.AspNetCore/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nxg43rhL7QCgX/+Rm258ACsLyhP+MaNUrp27C+lnEUJazRbT/G1YGfl6PJFMt2q1H+oJXPvuIMEvEy74ViK6Rg==",
+      "path": "netlah.extensions.logging.serilog.aspnetcore/1.0.0",
+      "hashPath": "netlah.extensions.logging.serilog.aspnetcore.1.0.0.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
       "serviceable": true,
@@ -4323,12 +4636,82 @@
       "path": "npgsql.entityframeworkcore.postgresql/9.0.4",
       "hashPath": "npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512"
     },
+    "RabbitMQ.Client/7.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y3c6ulgULScWthHw5PLM1ShHRLhxg0vCtzX/hh61gRgNecL3ZC3WoBW2HYHoXOVRqTl99Br9E7CZEytGZEsCyQ==",
+      "path": "rabbitmq.client/7.1.2",
+      "hashPath": "rabbitmq.client.7.1.2.nupkg.sha512"
+    },
     "Scrutor/3.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
       "path": "scrutor/3.3.0",
       "hashPath": "scrutor.3.3.0.nupkg.sha512"
+    },
+    "Serilog/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+cDryFR0GRhsGOnZSKwaDzRRl4MupvJ42FhCE4zhQRVanX0Jpg6WuCBk59OVhVDPmab1bB+nRykAnykYELA9qQ==",
+      "path": "serilog/4.3.0",
+      "hashPath": "serilog.4.3.0.nupkg.sha512"
+    },
+    "Serilog.AspNetCore/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JslDajPlBsn3Pww1554flJFTqROvK9zz9jONNQgn0D8Lx2Trw8L0A8/n6zEQK1DAZWXrJwiVLw8cnTR3YFuYsg==",
+      "path": "serilog.aspnetcore/9.0.0",
+      "hashPath": "serilog.aspnetcore.9.0.0.nupkg.sha512"
+    },
+    "Serilog.Extensions.Hosting/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u2TRxuxbjvTAldQn7uaAwePkWxTHIqlgjelekBtilAGL5sYyF3+65NWctN4UrwwGLsDC7c3Vz3HnOlu+PcoxXg==",
+      "path": "serilog.extensions.hosting/9.0.0",
+      "hashPath": "serilog.extensions.hosting.9.0.0.nupkg.sha512"
+    },
+    "Serilog.Extensions.Logging/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NwSSYqPJeKNzl5AuXVHpGbr6PkZJFlNa14CdIebVjK3k/76kYj/mz5kiTRNVSsSaxM8kAIa1kpy/qyT9E4npRQ==",
+      "path": "serilog.extensions.logging/9.0.0",
+      "hashPath": "serilog.extensions.logging.9.0.0.nupkg.sha512"
+    },
+    "Serilog.Formatting.Compact/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wQsv14w9cqlfB5FX2MZpNsTawckN4a8dryuNGbebB/3Nh1pXnROHZov3swtu3Nj5oNG7Ba+xdu7Et/ulAUPanQ==",
+      "path": "serilog.formatting.compact/3.0.0",
+      "hashPath": "serilog.formatting.compact.3.0.0.nupkg.sha512"
+    },
+    "Serilog.Settings.Configuration/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4/Et4Cqwa+F88l5SeFeNZ4c4Z6dEAIKbu3MaQb2Zz9F/g27T5a3wvfMcmCOaAiACjfUb4A6wrlTVfyYUZk3RRQ==",
+      "path": "serilog.settings.configuration/9.0.0",
+      "hashPath": "serilog.settings.configuration.9.0.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.Console/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQGWqVMClCP2yEyTXPIinSr5c+CBGUvBybPxjAGcf7ctDhadFhrQw03Mv8rJ07/wR5PDfFjewf2LimvXCDzpbA==",
+      "path": "serilog.sinks.console/6.0.0",
+      "hashPath": "serilog.sinks.console.6.0.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.Debug/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4BzXcdrgRX7wde9PmHuYd9U6YqycCC28hhpKonK7hx0wb19eiuRj16fPcPSVp0o/Y1ipJuNLYQ00R3q2Zs8FDA==",
+      "path": "serilog.sinks.debug/3.0.0",
+      "hashPath": "serilog.sinks.debug.3.0.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.File/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lxjg89Y8gJMmFxVkbZ+qDgjl+T4yC5F7WSLTvA+5q0R04tfKVLRL/EHpYoJ/MEQd2EeCKDuylBIVnAYMotmh2A==",
+      "path": "serilog.sinks.file/6.0.0",
+      "hashPath": "serilog.sinks.file.6.0.0.nupkg.sha512"
     },
     "SharpZipLib/1.4.2": {
       "type": "package",
@@ -4414,6 +4797,13 @@
       "path": "system.identitymodel.tokens.jwt/8.0.1",
       "hashPath": "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
     },
+    "System.IO.Pipelines/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
+      "path": "system.io.pipelines/8.0.0",
+      "hashPath": "system.io.pipelines.8.0.0.nupkg.sha512"
+    },
     "System.Reflection.Metadata/1.6.0": {
       "type": "package",
       "serviceable": true,
@@ -4456,6 +4846,13 @@
       "path": "system.text.encodings.web/8.0.0",
       "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
     },
+    "System.Threading.RateLimiting/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7mu9v0QDv66ar3DpGSZHg9NuNcxDaaAcnMULuZlaTpP9+hwXhrxNGsF5GmLkSHxFdb5bBc1TzeujsRgTrPWi+Q==",
+      "path": "system.threading.ratelimiting/8.0.0",
+      "hashPath": "system.threading.ratelimiting.8.0.0.nupkg.sha512"
+    },
     "Testcontainers/4.6.0": {
       "type": "package",
       "serviceable": true,
@@ -4469,6 +4866,13 @@
       "sha512": "sha512-JAqPYOVtIE7GJ3Mv3K6jR72Na76KSwf3BLogCGZIeOJ+4tm7As91MDH3mzCIDxNoK5I+FJZTm+iaONUTu7N45w==",
       "path": "testcontainers.postgresql/4.6.0",
       "hashPath": "testcontainers.postgresql.4.6.0.nupkg.sha512"
+    },
+    "Testcontainers.RabbitMq/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UFPMvZWqhGNIvMkmvNdIC19Fg5ZnhEESLKrTxY9BM2nCwxo3HGr1AU30tPL6Sa/RLhK3BuFpB/j14QH/jp8zvw==",
+      "path": "testcontainers.rabbitmq/4.6.0",
+      "hashPath": "testcontainers.rabbitmq.4.6.0.nupkg.sha512"
     },
     "xunit/2.9.2": {
       "type": "package",
@@ -4986,12 +5390,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/9.0.0.0": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.Reference/9.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/9.0.0.0": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Reference/9.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5346,7 +5750,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.IO.Pipelines/9.0.0.0": {
+    "System.IO.Pipelines.Reference/9.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5771,7 +6175,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Threading.RateLimiting/9.0.0.0": {
+    "System.Threading.RateLimiting.Reference/9.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

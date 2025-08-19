@@ -42,5 +42,10 @@ namespace AccountService.Features.Accounts
         ///  Дата закрытия счёта в формате ISO 8601, или null, если счёт активен.
         /// </summary>
         public DateTime? ClosingDate { get; set; }
+
+        /// <summary>
+        /// блокировка счета
+        /// </summary>
+        public bool IsFrozen { get; set; }
     }
 }

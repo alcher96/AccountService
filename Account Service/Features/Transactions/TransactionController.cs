@@ -31,18 +31,25 @@ namespace AccountService.Features.Transactions
         /// <response code="400">Недопустимые данные (например, недостаточно средств)</response>
         /// <response code="404">Счёт не найден</response>
         /// <response code="401">Для запроса требуется аутентификация</response>
+        /// <response code="409">Обнаружен конфликт или счет заморожен</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Authorize(Roles = "user")]
         public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionCommand command)
         {
             var result = await mediator.Send(command);
             if (!result.IsSuccess)
             {
-                return BadRequest(result);
+                return result.MbError switch
+                {
+                    "Concurrency conflict" => Conflict(result),
+                    "Account is frozen" => Conflict(result),
+                    _ => BadRequest(result)
+                };
             }
             return CreatedAtAction(nameof(AccountController.GetAccountById),
                 new { controller = "Account", id = command.AccountId }, result);
@@ -61,6 +68,7 @@ namespace AccountService.Features.Transactions
         /// <response code="400">Недопустимые данные (например, недостаточно средств или разные валюты)</response>
         /// <response code="404">Один из счетов не найден</response>
         /// <response code="401">Для запроса требуется аутентификация</response>
+        /// <response code="409">Обнаружен конфликт или счет заморожен</response>
         [HttpPost("transfers")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
