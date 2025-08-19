@@ -3,6 +3,7 @@ using AccountService.Messaging.Events;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 // ReSharper disable UnusedMember.Global
+// ReSharper disable ConvertToPrimaryConstructor
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace AccountService.Messaging.Consumer;
@@ -14,12 +15,12 @@ namespace AccountService.Messaging.Consumer;
 public class StubConsumer :
     IConsumer<AccountOpenedEvent>,
     IConsumer<MoneyCreditedEvent>,
-    IConsumer<MoneyDebitedEvent>
+    IConsumer<MoneyDebitedEvent>,
+    IConsumer<TransferCompletedEvent> // Добавлено
 {
     private readonly ILogger<StubConsumer> _logger;
     private readonly AccountDbContext _dbContext;
 
-    // ReSharper disable once ConvertToPrimaryConstructor
     public StubConsumer(ILogger<StubConsumer> logger, AccountDbContext dbContext)
     {
         _logger = logger;
@@ -32,7 +33,6 @@ public class StubConsumer :
         Guid eventId = GetEventId(@event);
         DateTime occurredAt = GetOccurredAt(@event);
         Guid? operationId = GetOperationId(@event);
-
         var existing = await _dbContext.InboxConsumed
             .AnyAsync(x => x.MessageId == eventId, context.CancellationToken);
         if (existing)
@@ -40,16 +40,15 @@ public class StubConsumer :
             _logger.LogInformation("Message already consumed: EventId: {EventId}", eventId);
             return;
         }
-
         string eventType = typeof(T).Name switch
         {
             nameof(AccountOpenedEvent) => "AccountOpened",
             nameof(MoneyCreditedEvent) => "MoneyCredited",
             nameof(MoneyDebitedEvent) => "MoneyDebited",
             nameof(InterestAccruedEvent) => "InterestAccrued",
+            nameof(TransferCompletedEvent) => "TransferCompleted", // Добавлено
             _ => "Unknown"
         };
-
         _logger.LogInformation(
             "Consumed event: EventId: {EventId}, Type: {Type}, CorrelationId: {CorrelationId}, OperationId: {OperationId}, Retry: {Retry}, Latency: {Latency}ms",
             eventId,
@@ -58,7 +57,6 @@ public class StubConsumer :
             operationId,
             context.Headers.Get<int>("MT-Redelivery-Count") ?? 0,
             (DateTime.UtcNow - occurredAt).TotalMilliseconds);
-
         _dbContext.InboxConsumed.Add(new InboxConsumed
         {
             MessageId = eventId,
@@ -74,6 +72,7 @@ public class StubConsumer :
             MoneyCreditedEvent e => e.EventId,
             MoneyDebitedEvent e => e.EventId,
             InterestAccruedEvent e => e.EventId,
+            TransferCompletedEvent e => e.EventId, // Добавлено
             _ => throw new InvalidOperationException($"Unknown event type: {typeof(T).Name}")
         };
 
@@ -84,6 +83,7 @@ public class StubConsumer :
             MoneyCreditedEvent e => e.OccurredAt,
             MoneyDebitedEvent e => e.OccurredAt,
             InterestAccruedEvent e => e.OccurredAt,
+            TransferCompletedEvent e => e.OccurredAt, // Добавлено
             _ => throw new InvalidOperationException($"Unknown event type: {typeof(T).Name}")
         };
 
@@ -92,11 +92,13 @@ public class StubConsumer :
         {
             MoneyCreditedEvent e => e.OperationId,
             MoneyDebitedEvent e => e.OperationId,
-            _ => null // InterestAccruedEvent не имеет OperationId
+            TransferCompletedEvent e => e.TransferId, // Добавлено
+            _ => null
         };
 
     public Task Consume(ConsumeContext<AccountOpenedEvent> context) => ConsumeEvent(context);
     public Task Consume(ConsumeContext<MoneyCreditedEvent> context) => ConsumeEvent(context);
     public Task Consume(ConsumeContext<MoneyDebitedEvent> context) => ConsumeEvent(context);
     public Task Consume(ConsumeContext<InterestAccruedEvent> context) => ConsumeEvent(context);
+    public Task Consume(ConsumeContext<TransferCompletedEvent> context) => ConsumeEvent(context); // Добавлено
 }

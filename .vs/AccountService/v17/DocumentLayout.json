@@ -1,213 +1,233 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Alex\\source\\repos\\AC\\",
+  "WorkspaceRootPath": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\data\\accountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\accountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\ac\\accountservice.tests\\paralleltransfertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\paralleltransfertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\performtransfer\\performtransfercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\performtransfer\\performtransfercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\data\\migrations\\20250812155349_addaccrueinterestprocedure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\migrations\\20250812155349_addaccrueinterestprocedure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\data\\migrations\\20250812155302_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\migrations\\20250812155302_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\validators\\updateaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\validators\\updateaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\ac\\accountservice.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\validators\\performtransfercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\performtransfercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\ac\\accountservice.tests\\testauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\testauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\extensions\\hangfirejobconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\hangfirejobconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\extensions\\authenticationerrormiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\authenticationerrormiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\program.partial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\program.partial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\accountservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\accountservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\validators\\getaccounttransactionsqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\getaccounttransactionsqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\validators\\accrueinterestcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\accrueinterestcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\utility\\allowanonymousauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\utility\\allowanonymousauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\accrueinterest\\accrueinterestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\messaging\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\messaging\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\messaging\\consumer\\stubconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\messaging\\consumer\\stubconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\messaging\\customoutboxpublisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\messaging\\customoutboxpublisherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\repositories\\outboxrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\repositories\\outboxrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\messaging\\events\\transfercompletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\messaging\\events\\transfercompletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\data\\accountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\accountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\accountservice.tests\\paralleltransfertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\paralleltransfertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\performtransfer\\performtransfercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\performtransfer\\performtransfercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\data\\migrations\\20250812155349_addaccrueinterestprocedure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\migrations\\20250812155349_addaccrueinterestprocedure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\data\\migrations\\20250812155302_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\migrations\\20250812155302_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\validators\\updateaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\validators\\updateaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\accountservice.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\validators\\performtransfercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\performtransfercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\accountservice.tests\\testauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\testauthhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\extensions\\hangfirejobconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\hangfirejobconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\extensions\\authenticationerrormiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\authenticationerrormiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\program.partial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\program.partial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\accountservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\accountservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\validators\\getaccounttransactionsqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\getaccounttransactionsqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\validators\\accrueinterestcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\accrueinterestcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\utility\\allowanonymousauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\utility\\allowanonymousauthorizationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\accrueinterest\\accrueinterestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\accrueinterest\\accrueinterestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\getaccount\\getaccountbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\getaccount\\getaccountbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\getaccount\\getaccountbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\data\\accountdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\data\\accountdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\data\\accountdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\validators\\createtransactioncommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\validators\\createtransactioncommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\validators\\createtransactioncommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\performtransfer\\command\\performtransfercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\performtransfer\\command\\performtransfercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\performtransfer\\command\\performtransfercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\getaccounttransactions\\query\\getaccounttransactionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\getaccounttransactions\\query\\getaccounttransactionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\getaccounttransactions\\query\\getaccounttransactionsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\getaccounttransactions\\getaccounttransactionsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\getaccounttransactions\\getaccounttransactionsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\getaccounttransactions\\getaccounttransactionsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\addtransaction\\createtransactioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\addtransaction\\createtransactioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\addtransaction\\createtransactioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\transactions\\addtransaction\\command\\createtransactioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\transactions\\addtransaction\\command\\createtransactioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\transactions\\addtransaction\\command\\createtransactioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\validators\\patchaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\validators\\patchaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\validators\\patchaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\validators\\getaccountbyidqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\validators\\getaccountbyidqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\validators\\getaccountbyidqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\validators\\createaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\validators\\createaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\validators\\createaccountcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\updateaccount\\updateaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\updateaccount\\updateaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\updateaccount\\updateaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\updateaccount\\command\\updateaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\updateaccount\\command\\updateaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\updateaccount\\command\\updateaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\updateaccount\\command\\updateaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\updateaccount\\command\\updateaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\updateaccount\\command\\updateaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\patchaccount\\patchaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\patchaccount\\patchaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\patchaccount\\patchaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\patchaccount\\command\\patchaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\patchaccount\\command\\patchaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\patchaccount\\command\\patchaccountrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\patchaccount\\command\\patchaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\patchaccount\\command\\patchaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\patchaccount\\command\\patchaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\getaccount\\query\\getaccountsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\getaccount\\query\\getaccountsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\getaccount\\query\\getaccountsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\getaccount\\query\\getaccountbyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\getaccount\\query\\getaccountbyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\getaccount\\query\\getaccountbyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\getaccount\\getaccountsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\getaccount\\getaccountsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\getaccount\\getaccountsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\addaccount\\createaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\addaccount\\createaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\addaccount\\createaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\ac\\account service\\features\\accounts\\addaccount\\command\\createaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\account service\\features\\accounts\\addaccount\\command\\createaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3E23E670-3B1B-4567-A6AE-1152550AD233}|Account Service\\AccountService.csproj|solutionrelative:account service\\features\\accounts\\addaccount\\command\\createaccountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\ac\\accountservice.tests\\transactioncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|c:\\users\\alex\\source\\repos\\account service\\accountservice\\accountservice\\accountservice.tests\\transactioncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A31AAA5A-890C-4BD8-99A6-266A1631229A}|AccountService.Tests\\AccountService.Tests.csproj|solutionrelative:accountservice.tests\\transactioncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -218,7 +238,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -226,154 +246,224 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OutboxRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Repositories\\OutboxRepository.cs",
+              "RelativeDocumentMoniker": "Account Service\\Repositories\\OutboxRepository.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Repositories\\OutboxRepository.cs",
+              "RelativeToolTip": "Account Service\\Repositories\\OutboxRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T14:42:10.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HealthController.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\HealthController.cs",
+              "RelativeDocumentMoniker": "Account Service\\Messaging\\HealthController.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\HealthController.cs",
+              "RelativeToolTip": "Account Service\\Messaging\\HealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T14:40:30.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StubConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\Consumer\\StubConsumer.cs",
+              "RelativeDocumentMoniker": "Account Service\\Messaging\\Consumer\\StubConsumer.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\Consumer\\StubConsumer.cs",
+              "RelativeToolTip": "Account Service\\Messaging\\Consumer\\StubConsumer.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T13:57:17.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "CustomOutboxPublisherService.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\CustomOutboxPublisherService.cs",
+              "RelativeDocumentMoniker": "Account Service\\Messaging\\CustomOutboxPublisherService.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\CustomOutboxPublisherService.cs",
+              "RelativeToolTip": "Account Service\\Messaging\\CustomOutboxPublisherService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T13:47:03.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AccountRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Repositories\\AccountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Repositories\\AccountRepository.cs",
               "RelativeDocumentMoniker": "Account Service\\Repositories\\AccountRepository.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Repositories\\AccountRepository.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Repositories\\AccountRepository.cs",
               "RelativeToolTip": "Account Service\\Repositories\\AccountRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAQwF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-11T09:46:32.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ParallelTransferTests.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\ParallelTransferTests.cs",
-              "RelativeDocumentMoniker": "AccountService.Tests\\ParallelTransferTests.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\ParallelTransferTests.cs",
-              "RelativeToolTip": "AccountService.Tests\\ParallelTransferTests.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAEwMEAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T09:45:15.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TransactionController.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\TransactionController.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\TransactionController.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\TransactionController.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\TransactionController.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\TransactionController.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\TransactionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAgwFUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-11T09:31:24.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\AccountDbContext.cs",
-              "RelativeDocumentMoniker": "Account Service\\Data\\AccountDbContext.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\AccountDbContext.cs",
-              "RelativeToolTip": "Account Service\\Data\\AccountDbContext.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAYwBgAAAAzAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Program.cs",
+              "RelativeDocumentMoniker": "Account Service\\Program.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Program.cs",
+              "RelativeToolTip": "Account Service\\Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwI4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T12:58:28.592Z",
+              "WhenOpened": "2025-08-11T10:11:48.713Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
+              "Title": "TransferCompletedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\Events\\TransferCompletedEvent.cs",
+              "RelativeDocumentMoniker": "Account Service\\Messaging\\Events\\TransferCompletedEvent.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Messaging\\Events\\TransferCompletedEvent.cs",
+              "RelativeToolTip": "Account Service\\Messaging\\Events\\TransferCompletedEvent.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA7wC4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T13:56:37.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ParallelTransferTests.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\ParallelTransferTests.cs",
+              "RelativeDocumentMoniker": "AccountService.Tests\\ParallelTransferTests.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\ParallelTransferTests.cs",
+              "RelativeToolTip": "AccountService.Tests\\ParallelTransferTests.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAEwMEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-11T09:45:15.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AccountDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\AccountDbContext.cs",
+              "RelativeDocumentMoniker": "Account Service\\Data\\AccountDbContext.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\AccountDbContext.cs",
+              "RelativeToolTip": "Account Service\\Data\\AccountDbContext.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAYwBgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-11T12:58:28.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Account.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Account.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\Account.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Account.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Account.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\Account.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAswC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAADwvy4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-11T13:00:23.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "PerformTransferCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\PerformTransfer\\PerformTransferCommandHandler.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAASwCcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T13:06:18.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-11T13:06:18.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Account Service\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\MappingProfile.cs",
               "RelativeToolTip": "Account Service\\MappingProfile.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAAAEAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T13:16:03.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T13:16:03.041Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "20250812155349_AddAccrueInterestProcedure.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
               "RelativeDocumentMoniker": "Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
               "RelativeToolTip": "Account Service\\Data\\Migrations\\20250812155349_AddAccrueInterestProcedure.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAhwEIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T15:53:51.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T15:53:51.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "20250812155302_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
               "RelativeDocumentMoniker": "Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
               "RelativeToolTip": "Account Service\\Data\\Migrations\\20250812155302_InitialCreate.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAQwFMAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T15:53:15.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T15:53:15.131Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "UpdateAccountCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\Validators\\UpdateAccountCommandValidator.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwDEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T09:52:41.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-11T09:52:41.364Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "AccountControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\AccountControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\AccountControllerTests.cs",
               "RelativeDocumentMoniker": "AccountService.Tests\\AccountControllerTests.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\AccountControllerTests.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\AccountControllerTests.cs",
               "RelativeToolTip": "AccountService.Tests\\AccountControllerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T09:35:32.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-11T09:35:32.108Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "PerformTransferCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\Validators\\PerformTransferCommandValidator.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAQwBcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -381,11 +471,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "TestAuthHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\TestAuthHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\TestAuthHandler.cs",
               "RelativeDocumentMoniker": "AccountService.Tests\\TestAuthHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\TestAuthHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\TestAuthHandler.cs",
               "RelativeToolTip": "AccountService.Tests\\TestAuthHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -393,11 +483,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 19,
               "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "Account Service\\Extensions\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeToolTip": "Account Service\\Extensions\\ServiceCollectionExtensions.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -405,11 +495,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": "HangfireJobConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\HangfireJobConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\HangfireJobConfiguration.cs",
               "RelativeDocumentMoniker": "Account Service\\Extensions\\HangfireJobConfiguration.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\HangfireJobConfiguration.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\HangfireJobConfiguration.cs",
               "RelativeToolTip": "Account Service\\Extensions\\HangfireJobConfiguration.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -417,11 +507,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 21,
               "Title": "AuthenticationErrorMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
               "RelativeDocumentMoniker": "Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
               "RelativeToolTip": "Account Service\\Extensions\\AuthenticationErrorMiddleware.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -429,11 +519,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "ApplicationBuilderExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
               "RelativeDocumentMoniker": "Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
               "RelativeToolTip": "Account Service\\Extensions\\ApplicationBuilderExtensions.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -441,11 +531,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Account Service\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Properties\\launchSettings.json",
               "RelativeToolTip": "Account Service\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -453,11 +543,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Dockerfile",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Dockerfile",
               "RelativeDocumentMoniker": "Account Service\\Dockerfile",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Dockerfile",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Dockerfile",
               "RelativeToolTip": "Account Service\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -465,11 +555,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "docker-compose.yml",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\docker-compose.yml",
               "RelativeDocumentMoniker": "Account Service\\docker-compose.yml",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\docker-compose.yml",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\docker-compose.yml",
               "RelativeToolTip": "Account Service\\docker-compose.yml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
@@ -477,11 +567,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "Program.Partial.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Program.Partial.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Program.Partial.cs",
               "RelativeDocumentMoniker": "Account Service\\Program.Partial.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Program.Partial.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Program.Partial.cs",
               "RelativeToolTip": "Account Service\\Program.Partial.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -489,11 +579,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "AccountService.csproj",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\AccountService.csproj",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\AccountService.csproj",
               "RelativeDocumentMoniker": "Account Service\\AccountService.csproj",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\AccountService.csproj",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\AccountService.csproj",
               "RelativeToolTip": "Account Service\\AccountService.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -501,11 +591,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "GetAccountTransactionsQueryValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\Validators\\GetAccountTransactionsQueryValidator.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -513,11 +603,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "AccrueInterestCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\Validators\\AccrueInterestCommandValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -525,11 +615,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "AllowAnonymousAuthorizationFilter.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
               "RelativeDocumentMoniker": "Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
               "RelativeToolTip": "Account Service\\Utility\\AllowAnonymousAuthorizationFilter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -537,23 +627,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Program.cs",
-              "RelativeDocumentMoniker": "Account Service\\Program.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Program.cs",
-              "RelativeToolTip": "Account Service\\Program.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-11T10:11:48.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "AccrueInterestCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\AccrueInterest\\AccrueInterestCommandHandler.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAUwGMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -561,11 +639,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AccountController.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AccountController.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\AccountController.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAAAewGEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -573,11 +651,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "GetAccountByIdQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\GetAccount\\GetAccountByIdQueryHandler.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwCAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -585,11 +663,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "AccountDbContextFactory.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\AccountDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\AccountDbContextFactory.cs",
               "RelativeDocumentMoniker": "Account Service\\Data\\AccountDbContextFactory.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Data\\AccountDbContextFactory.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Data\\AccountDbContextFactory.cs",
               "RelativeToolTip": "Account Service\\Data\\AccountDbContextFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -597,11 +675,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Transaction.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\Transaction.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Transaction.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Transaction.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\Transaction.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAkwCAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -609,11 +687,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 37,
               "Title": "PerformTransferCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\PerformTransfer\\Command\\PerformTransferCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -621,11 +699,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 38,
               "Title": "GetAccountTransactionsQuery.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\GetAccountTransactions\\Query\\GetAccountTransactionsQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -633,11 +711,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 39,
               "Title": "GetAccountTransactionsQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\GetAccountTransactions\\GetAccountTransactionsQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -645,11 +723,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 41,
               "Title": "CreateTransactionCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\AddTransaction\\Command\\CreateTransactionCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -657,11 +735,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "CreateTransactionCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\Validators\\CreateTransactionCommandValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -669,11 +747,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 42,
               "Title": "PatchAccountCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\Validators\\PatchAccountCommandValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -681,11 +759,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 44,
               "Title": "CreateAccountCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\Validators\\CreateAccountCommandValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -693,11 +771,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 46,
               "Title": "UpdateAccountRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -705,11 +783,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 40,
               "Title": "CreateTransactionCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Transactions\\AddTransaction\\CreateTransactionCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -717,11 +795,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 47,
               "Title": "UpdateAccountCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\UpdateAccount\\Command\\UpdateAccountCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -729,11 +807,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 49,
               "Title": "PatchAccountRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -741,11 +819,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 43,
               "Title": "GetAccountByIdQueryValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\Validators\\GetAccountByIdQueryValidator.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -753,11 +831,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 50,
               "Title": "PatchAccountCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\PatchAccount\\Command\\PatchAccountCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -765,11 +843,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 45,
               "Title": "UpdateAccountCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\UpdateAccount\\UpdateAccountCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -777,11 +855,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 51,
               "Title": "GetAccountsQuery.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountsQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -789,11 +867,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 52,
               "Title": "GetAccountByIdQuery.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\GetAccount\\Query\\GetAccountByIdQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -801,11 +879,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 48,
               "Title": "PatchAccountCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\PatchAccount\\PatchAccountCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -813,11 +891,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 53,
               "Title": "GetAccountsQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\GetAccount\\GetAccountsQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -825,11 +903,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 55,
               "Title": "CreateAccountCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\AddAccount\\Command\\CreateAccountCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -837,11 +915,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 54,
               "Title": "CreateAccountCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
               "RelativeDocumentMoniker": "Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
               "RelativeToolTip": "Account Service\\Features\\Accounts\\AddAccount\\CreateAccountCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -849,11 +927,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 56,
               "Title": "TransactionControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\TransactionControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\TransactionControllerTests.cs",
               "RelativeDocumentMoniker": "AccountService.Tests\\TransactionControllerTests.cs",
-              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService.Tests\\TransactionControllerTests.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\TransactionControllerTests.cs",
               "RelativeToolTip": "AccountService.Tests\\TransactionControllerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

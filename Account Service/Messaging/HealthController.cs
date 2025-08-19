@@ -1,7 +1,11 @@
 ﻿using AccountService.Data;
+using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RabbitMQ.Client;
+
+// ReSharper disable NotAccessedPositionalProperty.Local
+#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
 
 namespace AccountService.Messaging
 {
@@ -13,18 +17,18 @@ namespace AccountService.Messaging
     public class HealthController : ControllerBase
     {
         private readonly AccountDbContext _dbContext;
-        private readonly IConnectionFactory _rabbitMqConnectionFactory;
+        private readonly IBus _bus;
         private const int BacklogWarningThreshold = 100;
+
 
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="HealthController"/>.
         /// </summary>
         /// <param name="dbContext">Контекст базы данных для проверки Outbox.</param>
-        /// <param name="rabbitMqConnectionFactory">Фабрика подключения к RabbitMQ для проверки доступности.</param>
-        public HealthController(AccountDbContext dbContext, IConnectionFactory rabbitMqConnectionFactory)
+        public HealthController(AccountDbContext dbContext, IBus bus)
         {
             _dbContext = dbContext;
-            _rabbitMqConnectionFactory = rabbitMqConnectionFactory;
+            _bus = bus;
         }
 
         /// <summary>
@@ -32,6 +36,7 @@ namespace AccountService.Messaging
         /// </summary>
         /// <returns>JSON-ответ с полем "status" равным "Healthy".</returns>
         [HttpGet("live")]
+        [AllowAnonymous]
         public IActionResult Live()
         {
             return Ok(new { status = "Healthy" });
@@ -42,15 +47,15 @@ namespace AccountService.Messaging
         /// </summary>
         /// <returns>JSON-ответ с общим статусом и деталями проверок.</returns>
         [HttpGet("ready")]
+        [AllowAnonymous]
         public async Task<IActionResult> Ready()
         {
             var checks = new[]
             {
                 await CheckDatabase(),
-                CheckRabbitMq(),
+                await CheckRabbitMq(),
                 await CheckOutbox()
             };
-
             var result = new
             {
                 status = "Healthy",
@@ -61,8 +66,6 @@ namespace AccountService.Messaging
                     description = c.Description
                 }).ToArray()
             };
-
-            // Определяем общий статус
             if (checks.Any(c => c.Status == "Unhealthy"))
             {
                 result = result with { status = "Unhealthy" };
@@ -71,7 +74,6 @@ namespace AccountService.Messaging
             {
                 result = result with { status = "Degraded" };
             }
-
             return Ok(result);
         }
 
@@ -101,12 +103,13 @@ namespace AccountService.Messaging
         /// Проверяет подключение к RabbitMQ.
         /// </summary>
         /// <returns>Результат проверки RabbitMQ.</returns>
-        private CheckResult CheckRabbitMq()
+        private async Task<CheckResult> CheckRabbitMq()
         {
             try
             {
-                using var connection = _rabbitMqConnectionFactory.CreateConnectionAsync();
-                return new CheckResult("RabbitMQ", "Healthy", "RabbitMQ is reachable");
+                // Публикация тестового сообщения для проверки подключения
+                await _bus.Publish(new TestMessage(Id: Guid.NewGuid()));
+                return new CheckResult("RabbitMQ", "Healthy", "RabbitMQ is reachable via MassTransit");
             }
             catch (Exception ex)
             {
@@ -124,7 +127,6 @@ namespace AccountService.Messaging
             {
                 var unpublishedCount = await _dbContext.OutboxMessages
                     .CountAsync(m => m.SentAt == null);
-
                 if (unpublishedCount > BacklogWarningThreshold)
                 {
                     return new CheckResult(
@@ -132,7 +134,6 @@ namespace AccountService.Messaging
                         "Degraded",
                         $"Outbox backlog warning: {unpublishedCount} unpublished messages (threshold: {BacklogWarningThreshold})");
                 }
-
                 return new CheckResult(
                     "Outbox",
                     "Healthy",
@@ -143,5 +144,7 @@ namespace AccountService.Messaging
                 return new CheckResult("Outbox", "Unhealthy", $"Outbox check failed: {ex.Message}");
             }
         }
+        // Тестовое сообщение для проверки RabbitMQ
+        private record TestMessage(Guid Id);
     }
 }
