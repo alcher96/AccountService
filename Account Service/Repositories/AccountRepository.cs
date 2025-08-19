@@ -80,7 +80,7 @@ public class AccountRepository : IAccountRepository
     }
 
     public async Task<(Transaction debit, Transaction credit)?> TransferAsync(Guid fromAccountId, Guid toAccountId,
-     decimal amount, string currency, string description)
+    decimal amount, string currency, string description)
     {
         Console.WriteLine($"[AccountRepository] TransferAsync called: FromAccountId={fromAccountId}, ToAccountId={toAccountId}, Amount={amount}, Currency={currency}, Description={description}");
         await using var dbTransaction = await _context.Database.BeginTransactionAsync(IsolationLevel.ReadCommitted);
@@ -91,37 +91,9 @@ public class AccountRepository : IAccountRepository
             var toAccount = await _context.Accounts
                 .FirstOrDefaultAsync(a => a.AccountId == toAccountId);
 
-            if (fromAccount == null || toAccount == null)
-            {
-                Console.WriteLine("[AccountRepository] One or both accounts not found");
-                await dbTransaction.RollbackAsync();
-                return null;
-            }
 
-            if (fromAccount.IsFrozen || toAccount.IsFrozen)
-            {
-                Console.WriteLine("[AccountRepository] One or both accounts are frozen");
-                await dbTransaction.RollbackAsync();
-                throw new InvalidOperationException("One or both accounts are frozen");
-            }
-
-            if (fromAccount.Currency != currency || toAccount.Currency != currency)
-            {
-                Console.WriteLine("[AccountRepository] Currency mismatch");
-                await dbTransaction.RollbackAsync();
-                throw new InvalidOperationException("Currency mismatch");
-            }
-
-            if (fromAccount.Balance < amount)
-            {
-                Console.WriteLine("[AccountRepository] Insufficient funds in the source account");
-                await dbTransaction.RollbackAsync();
-                throw new InvalidOperationException("Insufficient funds in the source account");
-            }
-
-            fromAccount.Balance -= amount;
-            toAccount.Balance += amount;
-
+            if (fromAccount != null) fromAccount.Balance -= amount;
+            if (toAccount != null) toAccount.Balance += amount;
             var command = new PerformTransferCommand
             {
                 FromAccountId = fromAccountId,
@@ -130,19 +102,16 @@ public class AccountRepository : IAccountRepository
                 Currency = currency,
                 Description = description
             };
-
             var debit = _mapper.Map<Transaction>(command, opts => opts.Items["TransactionType"] = TransactionType.Debit);
             debit.TransactionId = Guid.NewGuid();
             debit.AccountId = fromAccountId;
             debit.CounterpartyAccountId = toAccountId;
             debit.DateTime = DateTime.UtcNow;
-
             var credit = _mapper.Map<Transaction>(command, opts => opts.Items["TransactionType"] = TransactionType.Credit);
             credit.TransactionId = Guid.NewGuid();
             credit.AccountId = toAccountId;
             credit.CounterpartyAccountId = fromAccountId;
             credit.DateTime = DateTime.UtcNow;
-
             _context.Transactions.Add(debit);
             _context.Transactions.Add(credit);
 
@@ -207,13 +176,43 @@ public class AccountRepository : IAccountRepository
             _context.OutboxMessages.Add(creditOutboxMessage);
             Console.WriteLine($"[AccountRepository] Added OutboxMessage: Id={creditOutboxMessage.Id}, EventType={creditOutboxMessage.EventType}, Payload={creditPayload}");
 
+            // Создаём событие TransferCompletedEvent
+            var transferEvent = new TransferCompletedEvent
+            {
+                EventId = Guid.NewGuid(),
+                OccurredAt = DateTime.UtcNow,
+                SourceAccountId = fromAccountId,
+                DestinationAccountId = toAccountId,
+                Amount = amount,
+                Currency = currency,
+                TransferId = Guid.NewGuid(),
+                Meta = new MetaData
+                {
+                    Version = "v1",
+                    Source = "account-service",
+                    CorrelationId = Guid.NewGuid(),
+                    CausationId = Guid.NewGuid()
+                }
+            };
+            var transferPayload = JsonSerializer.Serialize(transferEvent);
+            var transferOutboxMessage = new OutboxMessage
+            {
+                Id = Guid.NewGuid(),
+                CreatedAt = DateTime.UtcNow,
+                EventType = "TransferCompleted",
+                Payload = transferPayload,
+                RetryCount = 0,
+                SentAt = null
+            };
+            _context.OutboxMessages.Add(transferOutboxMessage);
+            Console.WriteLine($"[AccountRepository] Added OutboxMessage: Id={transferOutboxMessage.Id}, EventType={transferOutboxMessage.EventType}, Payload={transferPayload}");
+
             // Отладка: Проверяем содержимое OutboxMessages перед сохранением
             var outboxMessagesBeforeSave = await _context.OutboxMessages.ToListAsync();
             Console.WriteLine($"[AccountRepository] OutboxMessages before SaveChanges: {JsonSerializer.Serialize(outboxMessagesBeforeSave)}");
 
             await _context.SaveChangesAsync();
             await dbTransaction.CommitAsync();
-
             Console.WriteLine("[AccountRepository] Transfer completed successfully");
             return (debit, credit);
         }

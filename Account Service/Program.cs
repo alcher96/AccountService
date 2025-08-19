@@ -148,8 +148,8 @@ builder.Services.AddMassTransit(x =>
             });
             e.ConfigureConsumer<ClientStatusConsumer>(context);
             e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-            e.PrefetchCount = 1;
-                //e.ConfigureConsumeTopology = false;
+            e.PrefetchCount = 1; 
+            e.ConfigureConsumeTopology = false;
             e.ConcurrentMessageLimit = 1;
             e.UseRawJsonSerializer();
         });

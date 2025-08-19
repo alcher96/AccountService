@@ -6461,11 +6461,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService\\AccountService.Tests\\AccountService.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\AccountService.Tests.csproj",
       "projectName": "AccountService.Tests",
-      "projectPath": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService\\AccountService.Tests\\AccountService.Tests.csproj",
+      "projectPath": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\AccountService.Tests.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService\\AccountService.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\AccountService.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6487,8 +6487,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService\\Account Service\\AccountService.csproj": {
-              "projectPath": "C:\\Users\\Alex\\source\\repos\\AC\\AccountService\\AccountService\\Account Service\\AccountService.csproj"
+            "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\AccountService.csproj": {
+              "projectPath": "C:\\Users\\Alex\\source\\repos\\Account Service\\AccountService\\AccountService\\Account Service\\AccountService.csproj"
             }
           }
         }

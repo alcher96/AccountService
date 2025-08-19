@@ -25,7 +25,7 @@ public class CustomOutboxPublisherService : BackgroundService
     public CustomOutboxPublisherService(
         IServiceScopeFactory scopeFactory,
         ILogger<CustomOutboxPublisherService> logger,
-        bool isInitialized = false)
+        bool isInitialized = true)
     {
         _scopeFactory = scopeFactory;
         _logger = logger;
@@ -73,6 +73,7 @@ public class CustomOutboxPublisherService : BackgroundService
                     "InterestAccrued" => (typeof(InterestAccruedEvent), "money.interest_accrued"),
                     "ClientBlocked" => (typeof(ClientBlockedEvent), "client.blocked"),
                     "ClientUnblocked" => (typeof(ClientUnblockedEvent), "client.unblocked"),
+                    "TransferCompleted" => (typeof(TransferCompletedEvent), "transfer.completed"), 
                     _ => throw new InvalidOperationException($"Unknown event type: {msg.EventType}")
                 };
                 var @event = JsonSerializer.Deserialize(msg.Payload, eventType, new JsonSerializerOptions
@@ -164,6 +165,7 @@ public class CustomOutboxPublisherService : BackgroundService
             InterestAccruedEvent e => e.EventId,
             ClientBlockedEvent e => e.EventId,
             ClientUnblockedEvent e => e.EventId,
+            TransferCompletedEvent e => e.EventId, 
             _ => throw new InvalidOperationException("Unknown event type")
         };
 }
