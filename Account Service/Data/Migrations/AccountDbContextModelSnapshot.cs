@@ -44,6 +44,9 @@ namespace AccountService.Data.Migrations
                     b.Property<decimal>("InterestRate")
                         .HasColumnType("numeric");
 
+                    b.Property<bool>("IsFrozen")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("OpeningDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -101,6 +104,74 @@ namespace AccountService.Data.Migrations
                     NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex(new[] { "DateTime" }, "IX_Transactions_TransactionDate"), "gist");
 
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("AccountService.Messaging.InboxConsumed", b =>
+                {
+                    b.Property<Guid>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ConsumedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("InboxConsumed");
+                });
+
+            modelBuilder.Entity("AccountService.Messaging.InboxDeadLetter", b =>
+                {
+                    b.Property<Guid>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("EventType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("FailedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("InboxDeadLetters");
+                });
+
+            modelBuilder.Entity("AccountService.Messaging.OutboxMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("EventType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("RetryCount")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("SentAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutboxMessages");
                 });
 
             modelBuilder.Entity("AccountService.Features.Transactions.Transaction", b =>

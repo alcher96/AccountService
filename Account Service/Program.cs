@@ -10,11 +10,37 @@ using AccountService.Utility;
 using Microsoft.EntityFrameworkCore;
 using Hangfire;
 using Hangfire.PostgreSql;
+using AccountService.Messaging;
+using AccountService.Messaging.Events;
+using RabbitMQ.Client;
+using MassTransit;
+using AccountService.Messaging.Consumer;
+using AccountService.Messaging.Events.Client;
+using Serilog.Events;
+using Serilog;
+// ReSharper disable StringLiteralTypo
 
 var builder = WebApplication.CreateBuilder(args);
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .MinimumLevel.Override("MassTransit", LogEventLevel.Debug)
+    .Enrich.FromLogContext()
+    .WriteTo.Console(
+        outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}")
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
 
 builder.Services.AddJwtAuthentication();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SchemaFilter<EventSchemasFilter>();
+    // явно включаем схемы событий
+    c.DocumentFilter<CustomEventSchemasDocumentFilter>();
+});
 builder.Services.AddSwaggerConfiguration();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -27,6 +53,7 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();
 builder.Services.AddDbContext<AccountDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -41,20 +68,99 @@ builder.Services.AddCors(options =>
 });
 
 
+#pragma warning disable CS0618 // Type or member is obsolete
 builder.Services.AddHangfire(configuration => configuration
     .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UsePostgreSqlStorage(options =>
+    .UsePostgreSqlStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new PostgreSqlStorageOptions
     {
-        options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"));
+        PrepareSchemaIfNecessary = true //
     }));
+#pragma warning restore CS0618 // Type or member is obsolete
 
 // Register Hangfire server only if not in test environment
 if (!builder.Environment.IsEnvironment("Test"))
 {
     builder.Services.AddHangfireServer();
 }
+
+// MassTransit настройка (без Outbox)
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<StubConsumer>();
+    x.AddConsumer<ClientStatusConsumer>(); // New consumer
+    x.SetKebabCaseEndpointNameFormatter();
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(new Uri("rabbitmq://rabbitmq"), h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.Message<AccountOpenedEvent>(e => e.SetEntityName("account.events"));
+        cfg.Message<MoneyCreditedEvent>(e => e.SetEntityName("account.events"));
+        cfg.Message<MoneyDebitedEvent>(e => e.SetEntityName("account.events"));
+        cfg.Message<InterestAccruedEvent>(e => e.SetEntityName("account.events"));
+        cfg.Message<ClientBlockedEvent>(e => e.SetEntityName("account.events"));
+        cfg.Message<ClientUnblockedEvent>(e => e.SetEntityName("account.events"));
+
+        cfg.Publish<AccountOpenedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+        cfg.Publish<MoneyCreditedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+        cfg.Publish<MoneyDebitedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+        cfg.Publish<InterestAccruedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+        cfg.Publish<ClientBlockedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+        cfg.Publish<ClientUnblockedEvent>(e => { e.ExchangeType = ExchangeType.Topic; e.AutoDelete = false; e.Durable = true; });
+
+        cfg.ReceiveEndpoint("account.crm", e =>
+        {
+            e.Bind("account.events", b =>
+            {
+                b.RoutingKey = "account.*";
+                b.ExchangeType = ExchangeType.Topic;
+            });
+            e.ConfigureConsumer<StubConsumer>(context);
+            e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+            e.PrefetchCount = 1;
+            e.ConfigureConsumeTopology = false;
+        });
+
+        cfg.ReceiveEndpoint("account.notifications", e =>
+        {
+            e.Bind("account.events", b =>
+            {
+                b.RoutingKey = "money.*";
+                b.ExchangeType = ExchangeType.Topic;
+            });
+            e.ConfigureConsumer<StubConsumer>(context);
+            e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+            e.PrefetchCount = 1;
+            e.ConfigureConsumeTopology = false;
+        });
+
+        cfg.ReceiveEndpoint("antifraud.client.status", e =>
+        {
+            e.Bind("account.events", b =>
+            {
+                b.RoutingKey = "client.*";
+                b.ExchangeType = ExchangeType.Topic;
+            });
+            e.ConfigureConsumer<ClientStatusConsumer>(context);
+            e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+            e.PrefetchCount = 1;
+                //e.ConfigureConsumeTopology = false;
+            e.ConcurrentMessageLimit = 1;
+            e.UseRawJsonSerializer();
+        });
+
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
+// ƒобавл€ем кастомный publisher как background service
+builder.Services.AddHostedService<CustomOutboxPublisherService>();
+
 
 var app = builder.Build();
 
@@ -74,6 +180,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<AuthenticationErrorMiddleware>();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthentication();

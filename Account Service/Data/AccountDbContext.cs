@@ -1,5 +1,6 @@
 ﻿using AccountService.Features.Accounts;
 using AccountService.Features.Transactions;
+using AccountService.Messaging;
 using Microsoft.EntityFrameworkCore;
 // ReSharper disable ConvertToPrimaryConstructor
 // ReSharper disable StringLiteralTypo
@@ -12,6 +13,9 @@ namespace AccountService.Data
     {
         public DbSet<Account> Accounts { get; set; } = null!;
         public DbSet<Transaction> Transactions { get; set; } = null!;
+        public DbSet<OutboxMessage> OutboxMessages { get; set; }
+        public DbSet<InboxConsumed> InboxConsumed { get; set; }
+        public DbSet<InboxDeadLetter> InboxDeadLetters { get; set; }
 
         public AccountDbContext(DbContextOptions<AccountDbContext> options) : base(options) { }
 
@@ -33,6 +37,13 @@ namespace AccountService.Data
                 entity.HasIndex(e => new { e.AccountId, e.DateTime }, "IX_Transactions_AccountId_TransactionDate");
                 entity.HasIndex(e => e.DateTime, "IX_Transactions_TransactionDate").HasMethod("gist");
             });
+
+            modelBuilder.Entity<InboxConsumed>()
+                .HasKey(x => x.MessageId); // Указываем MessageId как первичный ключ
+
+            // Настройка InboxDeadLetters (если не настроена)
+            modelBuilder.Entity<InboxDeadLetter>()
+                .HasKey(x => x.MessageId);
         }
             
         
