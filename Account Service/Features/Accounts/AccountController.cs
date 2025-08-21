@@ -38,13 +38,10 @@ namespace AccountService.Features.Accounts
         [Authorize(Roles = "user")] 
         public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand command)
         {
-            var result = await mediator.Send(command);
-            //доп.проверка по полю IsSuccess
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return CreatedAtAction(nameof(GetAccountById), new { id = result.Value!.AccountId }, result);
+              var result = await mediator.Send(command);
+    return result.IsSuccess
+        ? CreatedAtAction(nameof(GetAccountById), new { id = result.Value!.AccountId }, result)
+        : BadRequest(result);
         }
 
         /// <summary>
@@ -66,11 +63,7 @@ namespace AccountService.Features.Accounts
         {
             var query = new GetAccountsQuery { OwnerId = ownerId, Type = type };
             var result = await mediator.Send(query);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         /// <summary>
@@ -94,11 +87,7 @@ namespace AccountService.Features.Accounts
         {
             var query = new GetAccountByIdQuery { Id = id };
             var result = await mediator.Send(query);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         /// <summary>
@@ -126,11 +115,7 @@ namespace AccountService.Features.Accounts
         {
             var command = new UpdateAccountCommand { Id = id, Request = request };
             var result = await mediator.Send(command);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
 
@@ -160,11 +145,7 @@ namespace AccountService.Features.Accounts
         {
             var command = new PatchAccountCommand { Id = id, Request = request };
             var result = await mediator.Send(command);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         /// <summary>
@@ -189,11 +170,7 @@ namespace AccountService.Features.Accounts
         {
             var command = new DeleteAccountCommand { Id = id };
             var result = await mediator.Send(command);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return NoContent();
+            return result.IsSuccess ? NoContent() : BadRequest(result);
         }
 
 

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AccountService.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AccountService.Features.Transactions.AddTransaction.Command;
@@ -42,17 +43,11 @@ namespace AccountService.Features.Transactions
         public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionCommand command)
         {
             var result = await mediator.Send(command);
-            if (!result.IsSuccess)
-            {
-                return result.MbError switch
-                {
-                    "Concurrency conflict" => Conflict(result),
-                    "Account is frozen" => Conflict(result),
-                    _ => BadRequest(result)
-                };
-            }
-            return CreatedAtAction(nameof(AccountController.GetAccountById),
-                new { controller = "Account", id = command.AccountId }, result);
+
+            return this.ToActionResult(
+                result,
+                _ => CreatedAtAction(nameof(AccountController.GetAccountById),
+                    new { controller = "Account", id = command.AccountId }, result));
         }
 
         /// <summary>
@@ -79,16 +74,11 @@ namespace AccountService.Features.Transactions
         public async Task<IActionResult> PerformTransfer([FromBody] PerformTransferCommand command)
         {
             var result = await mediator.Send(command);
-            if (!result.IsSuccess)
-            {
-                if (result.MbError == "Concurrency conflict")
-                {
-                    return Conflict(result);
-                }
-                return BadRequest(result);
-            }
-            return CreatedAtAction(nameof(AccountController.GetAccountById),
-                new { controller = "Account", id = command.FromAccountId }, result);
+
+            return this.ToActionResult(
+                result,
+                _ => CreatedAtAction(nameof(AccountController.GetAccountById),
+                    new { controller = "Account", id = command.FromAccountId }, result));
         }
 
         /// <summary>
@@ -118,11 +108,8 @@ namespace AccountService.Features.Transactions
             var query = new GetAccountTransactionsQuery
                 { AccountId = accountId, StartDate = startDate, EndDate = endDate };
             var result = await mediator.Send(query);
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+
+            return this.ToActionResult(result, Ok);
         }
 
         /// <summary>
@@ -132,17 +119,12 @@ namespace AccountService.Features.Transactions
         public async Task<IActionResult> AccrueInterest(CancellationToken cancellationToken)
         {
             var result = await mediator.Send(new AccrueInterestCommand(), cancellationToken);
-            if (!result.IsSuccess)
-            {
-                if (result.MbError?.Contains("Concurrency conflict") == true)
-                {
-                    return Conflict(new { error = result.MbError });
-                }
 
-                Console.WriteLine($"Accrue interest failed: {System.Text.Json.JsonSerializer.Serialize(result.MbError)}");
-                return BadRequest(result.MbError);
-            }
-            return Ok(result);
+            return result.IsSuccess
+                ? Ok(result)
+                : result.MbError?.Contains("Concurrency conflict") == true
+                    ? Conflict(new { error = result.MbError })
+                    : BadRequest(result.MbError);
         }
     }
 }
