@@ -43,10 +43,11 @@ dotnet ef database update
 dotnet build
 dotnet test
 ```
-## Доступ к Swagger UI и Hangfire**:
+## Доступ к Swagger UI и Hangfire и RabbitMQ**:
    - В режиме разработки приложение автоматически перенаправляет с корневого URL (`/`) на `/swagger`.
    - Откройте в браузере: `(https://localhost:80)`.
    - Откройте в браузере: `(https://localhost:80/hangfire)` для доступа к hangfire. Так же можно тригернуть задачу.
+   - Откройте в браузере: `(http://localhost:15672)` для доступа к мэнэджмент RabbitMQ. логин и пароль guest.
 
 ### Получение токена
 
